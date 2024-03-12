@@ -15,7 +15,7 @@ export default async () => {
       const dbs = await client.db().admin().listDatabases();
       await Promise.all(
         dbs.databases.map((db) => {
-          if (db.name.startsWith("tmpl-test-")) {
+          if (db.name.startsWith("contrat-test-")) {
             return client.db(db.name).dropDatabase();
           }
 
