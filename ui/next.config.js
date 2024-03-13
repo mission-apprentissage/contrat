@@ -68,7 +68,7 @@ const nextConfig = {
 
 // const sentryWebpackPluginOptions = {
 //   org: "sentry",
-//   project: "tmpl-ui",
+//   project: "contrat-ui",
 //   url: "https://sentry.apprentissage.beta.gouv.fr",
 
 //   // An auth token is required for uploading source maps.

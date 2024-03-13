@@ -14,11 +14,11 @@ export interface PublicConfig {
 }
 
 function getProductionPublicConfig(): PublicConfig {
-  const host = "tmpl.apprentissage.beta.gouv.fr";
+  const host = "contrat.apprentissage.beta.gouv.fr";
 
   return {
     sentry: {
-      dsn: "https://9517661db1de4c869b89a1a1a8678480@sentry.apprentissage.beta.gouv.fr/3",
+      dsn: "https://3e7602056d8e0df1638f34fc89e7aee5@sentry.apprentissage.beta.gouv.fr/13",
     },
     host,
     baseUrl: `https://${host}`,
@@ -30,11 +30,11 @@ function getProductionPublicConfig(): PublicConfig {
 }
 
 function getRecettePublicConfig(): PublicConfig {
-  const host = "tmpl-recette.apprentissage.beta.gouv.fr";
+  const host = "contrat-recette.apprentissage.beta.gouv.fr";
 
   return {
     sentry: {
-      dsn: "https://9517661db1de4c869b89a1a1a8678480@sentry.apprentissage.beta.gouv.fr/3",
+      dsn: "https://3e7602056d8e0df1638f34fc89e7aee5@sentry.apprentissage.beta.gouv.fr/13",
     },
     host,
     baseUrl: `https://${host}`,
@@ -53,11 +53,11 @@ function getPreviewPublicConfig(): PublicConfig {
     throw new Error(`getPreviewPublicConfig: invalid preview version ${version}`);
   }
 
-  const host = `${matches[1]}.tmpl-preview.apprentissage.beta.gouv.fr`;
+  const host = `${matches[1]}.contrat-preview.apprentissage.beta.gouv.fr`;
 
   return {
     sentry: {
-      dsn: "https://9517661db1de4c869b89a1a1a8678480@sentry.apprentissage.beta.gouv.fr/3",
+      dsn: "https://3e7602056d8e0df1638f34fc89e7aee5@sentry.apprentissage.beta.gouv.fr/13",
     },
     host,
     baseUrl: `https://${host}`,
@@ -72,7 +72,7 @@ function getLocalPublicConfig(): PublicConfig {
   const host = "localhost";
   return {
     sentry: {
-      dsn: "https://9517661db1de4c869b89a1a1a8678480@sentry.apprentissage.beta.gouv.fr/3",
+      dsn: "https://3e7602056d8e0df1638f34fc89e7aee5@sentry.apprentissage.beta.gouv.fr/13",
     },
     host,
     baseUrl: `http://${host}:3000`,
