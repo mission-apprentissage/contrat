@@ -4,11 +4,13 @@ fileignoreconfig:
 - filename: .github/workflows/release.yml
   checksum: 3d0ae5f153aa5f1b1dc1bfc708939728012d6cb558cc8bd715e397013bc9f56b
 - filename: .infra/env.ini
-  checksum: c895592bae3b1a356b11641308e5a8eb75a7dcfcec8c9cefd8ece4d246a9abde
+  checksum: 3b78c6c25fa45ef557ba7e10d27cb58233bfbbf995c0346477ddfaf980165972
+- filename: .infra/files/configs/mailpit/auth
+  checksum: 23b23d13d722d209d16c8c3f91cecf56eaff968d1894f7c72f1af33ff3006c69
 - filename: .infra/files/scripts/seed.sh
   checksum: a673a8f706cb90f2f5c9f98981b06ce95c566e67e2bb4a6323d6b1bdb8ef0233
 - filename: .infra/vault/vault.yml
-  checksum: 9fc0f15a0c7294e019b2390a3c29993d1b39705275d66304338dd8e09cd6d835
+  checksum: 8a0c045ea3c0f6cea1b97a2e4cf3e5d773f341f795f97a244b3a8617a998dd75
 - filename: README.md
   checksum: 00ac991f0b2746c5a5ffa14e2b3c5427b739c0d952aa3730efe1f234ac1fc3ca
 - filename: docs/developpement/1password.md
