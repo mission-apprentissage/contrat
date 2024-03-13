@@ -2,7 +2,7 @@ fileignoreconfig:
 - filename: .bin/scripts/setup-local-env.sh
   checksum: c9d412b132f3a7b8b6bde35f5acac94d1fffb87ce5ac718b6abc54b214899be2
 - filename: .github/workflows/release.yml
-  checksum: 3d0ae5f153aa5f1b1dc1bfc708939728012d6cb558cc8bd715e397013bc9f56b
+  checksum: 1698ebb4803de05f7d3b251d9ecde76d95d9a01b522ba67d656b394f41429afb
 - filename: .infra/env.ini
   checksum: 3b78c6c25fa45ef557ba7e10d27cb58233bfbbf995c0346477ddfaf980165972
 - filename: .infra/files/configs/mailpit/auth
