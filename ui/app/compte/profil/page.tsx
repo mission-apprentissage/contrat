@@ -55,7 +55,7 @@ const ProfilPage = () => {
     <>
       <Breadcrumb pages={[PAGES.compteProfil()]} />
       <Typography variant="h2" gutterBottom>
-        Mon compte.
+        Mon compte
       </Typography>
       <InfoDetails
         title="Mes informations"
