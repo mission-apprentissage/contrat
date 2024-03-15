@@ -1,6 +1,8 @@
 fileignoreconfig:
 - filename: .bin/scripts/setup-local-env.sh
   checksum: c9d412b132f3a7b8b6bde35f5acac94d1fffb87ce5ac718b6abc54b214899be2
+- filename: .github/workflows/deploy_preview.yml
+  checksum: aebddfdc1e62d2919f6baea7d56c632dd362b7ef7fa2633e93d2b2103b7c80a3
 - filename: .github/workflows/release.yml
   checksum: 1698ebb4803de05f7d3b251d9ecde76d95d9a01b522ba67d656b394f41429afb
 - filename: .infra/env.ini
