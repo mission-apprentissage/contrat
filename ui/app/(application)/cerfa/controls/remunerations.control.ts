@@ -53,7 +53,8 @@ export const RemunerationsControl: CerfaControl[] = [
       });
 
       const oldRemusCascade = Object.fromEntries(
-        oldRemus?.flatMap((remu, i) => [
+        // @ts-expect-error: todo
+        oldRemus?.flatMap((_, i) => [
           [`contrat.remunerationsAnnuelles.${i}.dateDebut`, undefined],
           [`contrat.remunerationsAnnuelles.${i}.dateFin`, undefined],
           [`contrat.remunerationsAnnuelles.${i}.taux`, undefined],

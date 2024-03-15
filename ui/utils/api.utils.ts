@@ -144,10 +144,10 @@ export class ApiError extends Error {
   }
 }
 
-export async function apiPost<P extends keyof IPostRoutes, S extends IPostRoutes[P] = IPostRoutes[P]>(
+export async function apiPostRaw<P extends keyof IPostRoutes, S extends IPostRoutes[P] = IPostRoutes[P]>(
   path: P,
   options: IRequest<S>
-): Promise<IResponse<S>> {
+): Promise<Response> {
   const { requestInit, headers } = await optionsToFetchParams("POST", options);
 
   const res = await fetch(generateUrl(path, options), requestInit);
@@ -156,6 +156,14 @@ export async function apiPost<P extends keyof IPostRoutes, S extends IPostRoutes
     throw await ApiError.build(path, headers, options, res);
   }
 
+  return res;
+}
+
+export async function apiPost<P extends keyof IPostRoutes, S extends IPostRoutes[P] = IPostRoutes[P]>(
+  path: P,
+  options: IRequest<S>
+): Promise<IResponse<S>> {
+  const res = await apiPostRaw(path, options);
   return res.json();
 }
 

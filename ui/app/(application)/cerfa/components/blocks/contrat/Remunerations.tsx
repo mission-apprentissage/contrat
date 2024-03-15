@@ -109,6 +109,7 @@ En savoir plus sur les situations spécifiques sur le [site du Ministère du Tra
       <CollapseController show={shouldShowRemunerationsAnnuelles}>
         <SmcField />
         <Box>
+          {/* @ts-expect-error: todo */}
           {remunerationsAnnuelles?.map((annee, i) => {
             const anneeLabel = getAnneeLabel(annee.ordre);
             return (

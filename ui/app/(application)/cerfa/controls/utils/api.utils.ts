@@ -1,4 +1,4 @@
-import { apiPost } from "utils/api.utils";
+import { apiPost } from "../../../../../utils/api.utils";
 
 type ErrorReturn = {
   error: string;
@@ -86,7 +86,7 @@ export const fetchCfdrncp: APIServiceAction<FetchCfdrncpParams> = async ({ rncp,
   }
 };
 
-export const controlEmail = async (email: string) => {
+export const controlEmail = async (email: string): Promise<{ is_valid?: boolean; error?: string }> => {
   try {
     return apiPost("/controls/email", {
       body: {

@@ -13,7 +13,11 @@ export const zControlsRoutes = {
         })
         .passthrough(),
       response: {
-        "2xx": z.any(),
+        "2xx": z
+          .object({
+            is_valid: z.boolean(),
+          })
+          .strict(),
       },
       securityScheme: null,
     },

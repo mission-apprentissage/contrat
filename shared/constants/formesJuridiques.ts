@@ -1,4 +1,4 @@
-export const formesJuridiques = {
+export const formesJuridiques: Record<string, { typeEmployeur: string }> = {
   "3120": { typeEmployeur: "12" },
   "3205": { typeEmployeur: "16" },
   "3290": { typeEmployeur: "12" },

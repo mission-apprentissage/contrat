@@ -1,6 +1,6 @@
 import { getTypeDiplomeFromCodeDiplome } from "shared/constants/diplomes";
 
-import { CerfaControl } from ".";
+import { CerfaControl, ControlReturn } from ".";
 import { fetchCfdrncp } from "./utils/api.utils";
 
 export const rncpControl: CerfaControl[] = [
@@ -45,7 +45,7 @@ export const rncpControl: CerfaControl[] = [
           "formation.intituleQualification": { value: result.intitule_diplome },
           "formation.typeDiplome": { value: diplome },
         },
-      };
+      } as ControlReturn;
     },
   },
 ];

@@ -273,7 +273,7 @@ const findSmicAtDate = (lookupDate: Date) => {
 
 const ceilUp = (x: number) => Math.ceil(x * 100) / 100;
 
-export const buildRemuneration = (data) => {
+export const buildRemuneration = (data: any) => {
   const selectedTaux = data.selectedTaux ?? {};
   const dateDebutContrat = parseISO(data.dateDebutContrat);
   const dateFinContrat = parseISO(data.dateFinContrat);
@@ -367,7 +367,7 @@ export const buildRemuneration = (data) => {
     return getSeuils(nextAge) > getSeuils(currentAge);
   };
 
-  const getTaux = (part, tauxValue) => Math.max(selectedTaux?.[part] ?? 0, tauxValue);
+  const getTaux = (part: number, tauxValue: number) => Math.max(selectedTaux?.[part] ?? 0, tauxValue);
 
   let finRemuneration = false;
   const emptyLineObj: {
@@ -771,7 +771,7 @@ export const buildRemuneration = (data) => {
     };
   }
 
-  const buildBlock2 = (part: number, result) =>
+  const buildBlock2 = (part: number, result: any) =>
     result[part].taux
       ? {
           dateDebut: result[part].dateDebut,

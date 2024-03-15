@@ -86,7 +86,7 @@ const CerfaForm: FC = () => {
   const download = async () => {
     // remove ref from errors
     const err = omitDeep(errors, "ref");
-    const data = await apiPostRaw("/v1/cerfa", {
+    const data = await apiPostRaw("/cerfa", {
       body: {
         values,
         errors: err,

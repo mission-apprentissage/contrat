@@ -31,7 +31,7 @@ export const getFieldStateFromFormState = (
 
 export const getFieldDeps = (name: string) => {
   const deps = indexedRules[name]?.map((control) => control.deps) ?? [];
-  return [...new Set(deps.flat())];
+  return Array.from(new Set(deps.flat()));
 };
 
 export const validateField = async (
@@ -92,7 +92,7 @@ export const getValues = (fields: any) => {
 
 export const isEmptyValue = (value: any) => value === "" || value === undefined || value === null;
 
-export const downloadFile = (data, filename: string) => {
+export const downloadFile = (data: Blob, filename: string) => {
   // Step 5: Create a download link for the Blob
   const url = URL.createObjectURL(data);
   const a = document.createElement("a");
