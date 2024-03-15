@@ -1,6 +1,8 @@
 fileignoreconfig:
 - filename: .bin/scripts/setup-local-env.sh
   checksum: c9d412b132f3a7b8b6bde35f5acac94d1fffb87ce5ac718b6abc54b214899be2
+- filename: .github/workflows/deploy_preview.yml
+  checksum: e908ddf091ace572177493c384d6b311735ce4ce505e849973794903f974ae44
 - filename: .github/workflows/release.yml
   checksum: 1698ebb4803de05f7d3b251d9ecde76d95d9a01b522ba67d656b394f41429afb
 - filename: .infra/.env_server
@@ -9,6 +11,8 @@ fileignoreconfig:
   checksum: 3b78c6c25fa45ef557ba7e10d27cb58233bfbbf995c0346477ddfaf980165972
 - filename: .infra/files/configs/mailpit/auth
   checksum: 23b23d13d722d209d16c8c3f91cecf56eaff968d1894f7c72f1af33ff3006c69
+- filename: .infra/files/configs/mongodb/seed.gpg
+  checksum: 1b1e81c2812b59898649bd6c46d3299275f9593703847e58590d46ec7eb405cc
 - filename: .infra/files/scripts/seed.sh
   checksum: a673a8f706cb90f2f5c9f98981b06ce95c566e67e2bb4a6323d6b1bdb8ef0233
 - filename: .infra/vault/vault.yml
