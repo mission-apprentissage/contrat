@@ -1,13 +1,12 @@
 import { isEmpty } from "lodash";
-import { CerfaForm } from "shared/helpers/cerfa/types/cerfa.types";
+import { CerfaControl } from "shared/helpers/cerfa/types/cerfa.types";
 
-import { CerfaControl } from ".";
 import { nirControl } from "./common/nir.control";
 
 export const apprentiNirControl: CerfaControl[] = [
   {
     deps: ["apprenti.nir"],
-    process: async ({ values }: CerfaForm) => {
+    process: async ({ values }) => {
       const { dateNaissance, departementNaissance, sexe, nir: unsanitizedNir } = values.apprenti;
       if (!unsanitizedNir || isEmpty(unsanitizedNir)) {
         return {};

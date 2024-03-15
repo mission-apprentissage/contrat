@@ -1,6 +1,6 @@
 import { getTypeDiplomeFromCodeDiplome } from "shared/constants/diplomes";
+import { CerfaControl, ControlReturn } from "shared/helpers/cerfa/types/cerfa.types";
 
-import { CerfaControl, ControlReturn } from ".";
 import { fetchCfdrncp } from "./utils/api.utils";
 
 export const rncpControl: CerfaControl[] = [

@@ -1,6 +1,5 @@
 import { idcc, isIdccEnVigueur } from "shared/constants/idcc";
-
-import { CerfaControl } from ".";
+import { CerfaControl } from "shared/helpers/cerfa/types/cerfa.types";
 
 export const idccControl: CerfaControl[] = [
   {

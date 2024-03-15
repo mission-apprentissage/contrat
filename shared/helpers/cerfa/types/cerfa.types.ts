@@ -1,5 +1,3 @@
-import { CerfaControl } from "../../../../ui/app/(application)/cerfa/controls";
-
 export type FieldType =
   | "text"
   | "number"
@@ -95,4 +93,33 @@ export interface CerfaForm {
   signal?: any;
   cache?: any;
   fields?: any;
+}
+
+interface ControlResult {
+  cascade?: Record<
+    string,
+    {
+      value?: any;
+      reset?: boolean;
+      locked?: boolean;
+      cascade?: boolean;
+      success?: boolean;
+      isAutocompleted?: boolean;
+      stateRelatedMessage?: string;
+      informationMessages?: InformationMessage[];
+    }
+  >;
+  cache?: string;
+  error?: string;
+  warning?: string;
+  reset?: boolean;
+}
+
+export type ControlReturn = Promise<ControlResult | undefined> | ControlResult | undefined;
+
+export interface CerfaControl {
+  target?: string;
+  blocCompletion?: string;
+  deps: string[];
+  process: (cerfaForm: CerfaForm) => ControlReturn;
 }

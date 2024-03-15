@@ -1,6 +1,5 @@
-import { CerfaForm } from "shared/helpers/cerfa/types/cerfa.types";
+import { CerfaControl, CerfaForm } from "shared/helpers/cerfa/types/cerfa.types";
 
-import { CerfaControl } from ".";
 import { fetchCodePostal } from "./utils/api.utils";
 
 export const apprentiCodePostalControl: CerfaControl[] = [

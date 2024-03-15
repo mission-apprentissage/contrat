@@ -1,4 +1,5 @@
-import { CerfaControl } from ".";
+import { CerfaControl } from "shared/helpers/cerfa/types/cerfa.types";
+
 import { fetchSiret } from "./utils/api.utils";
 
 const unlockAllCascade = {

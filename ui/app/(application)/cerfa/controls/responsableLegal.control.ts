@@ -1,6 +1,6 @@
 import { shouldAskRepresentantLegal } from "shared/helpers/cerfa/domains/apprenti/shouldAskRepresentantLegal";
+import { CerfaControl } from "shared/helpers/cerfa/types/cerfa.types";
 
-import { CerfaControl } from ".";
 import { createCopyRules } from "./utils/createCopyRules";
 
 export const responsableLegalControl: CerfaControl[] = [

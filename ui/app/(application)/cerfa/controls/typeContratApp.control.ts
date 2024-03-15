@@ -2,8 +2,7 @@ import { getLabelNumeroContratPrecedent } from "shared/helpers/cerfa/domains/con
 import { isRequiredNumeroContratPrecedent } from "shared/helpers/cerfa/domains/contrat/isRequiredNumeroContratPrecedent";
 import { shouldAskNumeroContratPrecedent } from "shared/helpers/cerfa/domains/contrat/shouldAskContratPrecedent";
 import { shouldAskDateEffetAvenant } from "shared/helpers/cerfa/domains/contrat/shouldAskDateEffetAvenant";
-
-import { CerfaControl } from ".";
+import { CerfaControl } from "shared/helpers/cerfa/types/cerfa.types";
 
 export const typeContratAppControl: CerfaControl[] = [
   {

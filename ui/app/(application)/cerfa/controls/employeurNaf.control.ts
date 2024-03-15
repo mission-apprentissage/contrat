@@ -1,4 +1,5 @@
-import { CerfaControl } from ".";
+import { CerfaControl } from "shared/helpers/cerfa/types/cerfa.types";
+
 import { fetchNaf } from "./utils/api.utils";
 
 export const employeurNafControl: CerfaControl[] = [

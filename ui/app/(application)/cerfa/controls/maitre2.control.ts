@@ -1,4 +1,4 @@
-import { CerfaControl } from ".";
+import { CerfaControl } from "shared/helpers/cerfa/types/cerfa.types";
 
 export const Maitre2Control: CerfaControl = {
   deps: ["maitre2.prenom", "maitre2.nom", "maitre2.dateNaissance"],

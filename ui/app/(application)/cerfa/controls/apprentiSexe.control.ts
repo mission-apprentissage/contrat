@@ -1,12 +1,10 @@
 import { isEmpty } from "lodash";
-import { CerfaForm } from "shared/helpers/cerfa/types/cerfa.types";
-
-import { CerfaControl } from ".";
+import { CerfaControl } from "shared/helpers/cerfa/types/cerfa.types";
 
 export const apprentiSexe: CerfaControl[] = [
   {
     deps: ["apprenti.nir", "apprenti.sexe"],
-    process: async ({ values }: CerfaForm) => {
+    process: async ({ values }) => {
       const sexe = values.apprenti.sexe;
       const nir = values.apprenti.nir as string;
 

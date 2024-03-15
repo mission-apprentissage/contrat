@@ -1,4 +1,4 @@
-import { CerfaForm, InformationMessage } from "shared/helpers/cerfa/types/cerfa.types";
+import { CerfaControl } from "shared/helpers/cerfa/types/cerfa.types";
 
 import { ageApprentiControl } from "./ageApprenti.control";
 import { apprentiCodePostalControl } from "./apprentiCodePostal.control";
@@ -32,35 +32,6 @@ import { rncpControl } from "./rncp.control";
 import { telephoneControl } from "./telephone.control";
 import { typeContratAppControl } from "./typeContratApp.control";
 import { typeDerogationControl } from "./typeDerogation.control";
-
-interface ControlResult {
-  cascade?: Record<
-    string,
-    {
-      value?: any;
-      reset?: boolean;
-      locked?: boolean;
-      cascade?: boolean;
-      success?: boolean;
-      isAutocompleted?: boolean;
-      stateRelatedMessage?: string;
-      informationMessages?: InformationMessage[];
-    }
-  >;
-  cache?: string;
-  error?: string;
-  warning?: string;
-  reset?: boolean;
-}
-
-export type ControlReturn = Promise<ControlResult | undefined> | ControlResult | undefined;
-
-export interface CerfaControl {
-  target?: string;
-  blocCompletion?: string;
-  deps: string[];
-  process: (cerfaForm: CerfaForm) => ControlReturn;
-}
 
 export const controls: CerfaControl[] = [
   ...dureeTravailControl,

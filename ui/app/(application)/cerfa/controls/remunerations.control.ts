@@ -1,5 +1,6 @@
+import { CerfaControl } from "shared/helpers/cerfa/types/cerfa.types";
+
 import { buildRemuneration } from "../components/blocks/domain/buildRemuneration";
-import { CerfaControl } from ".";
 
 interface RemunerationAnnuelle {
   dateDebut: string;

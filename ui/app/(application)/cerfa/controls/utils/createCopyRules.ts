@@ -1,6 +1,4 @@
-import { CerfaForm } from "shared/helpers/cerfa/types/cerfa.types";
-
-import { CerfaControl } from "..";
+import { CerfaControl, CerfaForm } from "shared/helpers/cerfa/types/cerfa.types";
 
 interface CreateCopyRuleParams {
   mapping: Record<string, string>;

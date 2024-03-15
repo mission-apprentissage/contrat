@@ -1,7 +1,6 @@
 import { isFuture, parseISO } from "date-fns";
+import { CerfaControl } from "shared/helpers/cerfa/types/cerfa.types";
 import { caclAgeAtDate } from "shared/helpers/cerfa/utils/dates";
-
-import { CerfaControl } from ".";
 
 export const ageApprentiControl: CerfaControl[] = [
   {

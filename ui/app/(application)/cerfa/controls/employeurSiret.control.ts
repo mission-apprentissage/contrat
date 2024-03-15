@@ -1,7 +1,7 @@
 import { formesJuridiques } from "shared/constants/formesJuridiques";
 import { idccOpcos, Opco, opcos } from "shared/constants/opcos";
+import { CerfaControl } from "shared/helpers/cerfa/types/cerfa.types";
 
-import { CerfaControl } from ".";
 import { fetchSiret } from "./utils/api.utils";
 
 const unlockAllCascade = {

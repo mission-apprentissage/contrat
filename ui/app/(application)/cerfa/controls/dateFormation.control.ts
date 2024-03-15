@@ -1,6 +1,5 @@
 import { addMonths, differenceInMonths, isAfter, isBefore, parseISO, subMonths } from "date-fns";
-
-import { CerfaControl } from ".";
+import { CerfaControl } from "shared/helpers/cerfa/types/cerfa.types";
 
 export const dateFormationControl: CerfaControl[] = [
   {

@@ -1,6 +1,5 @@
 import { isEmpty } from "lodash";
-
-import { ControlReturn } from "..";
+import { ControlReturn } from "shared/helpers/cerfa/types/cerfa.types";
 
 interface NirControlParams {
   nir: string;

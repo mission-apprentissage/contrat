@@ -1,8 +1,6 @@
 import { addMonths, differenceInMonths, isAfter, isBefore, parseISO, startOfDay } from "date-fns";
-import { InformationMessage } from "shared/helpers/cerfa/types/cerfa.types";
+import { CerfaControl, InformationMessage } from "shared/helpers/cerfa/types/cerfa.types";
 import { caclAgeAtDate } from "shared/helpers/cerfa/utils/dates";
-
-import { CerfaControl } from ".";
 
 export const ContratDatesControl: CerfaControl[] = [
   {

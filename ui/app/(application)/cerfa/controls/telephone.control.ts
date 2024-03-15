@@ -1,4 +1,4 @@
-import { CerfaControl } from ".";
+import { CerfaControl } from "shared/helpers/cerfa/types/cerfa.types";
 
 const control = (phone: string, emptyError?: string) => {
   if (!phone) {
