@@ -76,7 +76,7 @@ jobs:
               IdentityFile ~/.ssh/github_actions
 
       - name: Create vault pwd file
-        run: echo "${{ secrets.VAULT_PWD }}" > .infra/.vault_pwd.txt
+        run: echo ${{ secrets.VAULT_PWD }} > .infra/.vault_pwd.txt
 
       - name: Install jmespath
         run: |
