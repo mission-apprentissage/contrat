@@ -3,9 +3,15 @@ import z, { ZodType } from "zod";
 
 import { zUserAdminRoutes } from "./admin/admin.routes";
 import { zAuthRoutes } from "./auth.routes";
+import { zCerfaRoutes } from "./cerfa.routes";
 import { IRouteSchema, IRouteSchemaWrite } from "./common.routes";
+import { zControlsRoutes } from "./controls.routes";
 import { zCoreRoutes } from "./core.routes";
 import { zEmailRoutes } from "./emails.routes";
+import { zGeoRoutes } from "./geo.routes";
+import { zNafRoutes } from "./naf.routes";
+import { zSiretRoutes } from "./siret.routes";
+import { zTcoRoutes } from "./tco.routes";
 import { zUserRoutes } from "./user.routes";
 
 const zRoutesGet = {
@@ -20,6 +26,12 @@ const zRoutesPost = {
   ...zUserAdminRoutes.post,
   ...zAuthRoutes.post,
   ...zEmailRoutes.post,
+  ...zCerfaRoutes.post,
+  ...zControlsRoutes.post,
+  ...zGeoRoutes.post,
+  ...zNafRoutes.post,
+  ...zSiretRoutes.post,
+  ...zTcoRoutes.post,
 } as const;
 
 const zRoutesPut = {} as const;

@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 import { publicConfig } from "../config.public";
-import { NOTION_PAGES, Page, PAGES } from "./components/breadcrumb/Breadcrumb";
+import { NOTION_PAGES, Page, PAGES } from "./(application)/components/breadcrumb/Breadcrumb";
 
 function getSitemapItem(page: Page): MetadataRoute.Sitemap[number] {
   return {
