@@ -9,7 +9,7 @@ services:
       - "127.0.0.1:27017:27017"
     command: ["-f", "/etc/mongod.conf"]
     volumes:
-      - tpml_mongodb_data:/data
+      - contrat_mongodb_data:/data
       - ./.infra/local/mongo_keyfile:/tmp/mongo_keyfile
       - ./.infra/local/mongod.conf:/etc/mongod.conf
     healthcheck:
@@ -28,12 +28,12 @@ services:
     environment:
       - MP_DATA_FILE=/data/mailpit.db
     volumes:
-      - tpml_smtp_data:/data
+      - contrat_smtp_data:/data
 
 volumes:
-  tpml_mongodb_data:
+  contrat_mongodb_data:
     driver: local
-    name: tpml_mongodb_data
-  tpml_smtp_data:
+    name: contrat_mongodb_data
+  contrat_smtp_data:
     driver: local
-    name: tpml_smtp_data
+    name: contrat_smtp_data

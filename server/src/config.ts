@@ -48,6 +48,7 @@ const config = {
     },
   },
   disable_processors: env.get("DISABLE_PROCESSORS").default("false").asBool(),
+  apiEntreprise: env.get("MNA_CONTRAT_API_ENTREPRISE_SECRET").asString(),
 };
 
 export default config;

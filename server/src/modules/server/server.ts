@@ -19,11 +19,17 @@ import { initSentryFastify } from "../../common/services/sentry/sentry";
 import config from "../../config";
 import { userAdminRoutes } from "./admin/user.routes";
 import { authRoutes } from "./auth.routes";
+import { cerfaRoutes } from "./cerfa.routes";
+import { controlsRoutes } from "./controls.routes";
 import { coreRoutes } from "./core.routes";
 import { emailsRoutes } from "./emails.routes";
+import { geoRoutes } from "./geo.routes";
 import { auth } from "./middlewares/authMiddleware";
 import { errorMiddleware } from "./middlewares/errorMiddleware";
 import { logMiddleware } from "./middlewares/logMiddleware";
+import { nafRoutes } from "./naf.routes";
+import { siretRoutes } from "./siret.routes";
+import { tcoRoutes } from "./tco.routes";
 import { userRoutes } from "./user.routes";
 
 export interface Server
@@ -112,4 +118,10 @@ export const registerRoutes: RegisterRoutes = ({ server }) => {
   userRoutes({ server });
   emailsRoutes({ server });
   userAdminRoutes({ server });
+  cerfaRoutes({ server });
+  controlsRoutes({ server });
+  geoRoutes({ server });
+  nafRoutes({ server });
+  siretRoutes({ server });
+  tcoRoutes({ server });
 };
