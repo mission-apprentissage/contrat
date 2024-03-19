@@ -27,7 +27,7 @@ const summaryData = [
 ];
 
 const DonneesPersonnelles = () => {
-  const productName = "BAL";
+  const productName = "Contrat";
 
   return (
     <Grid container spacing={2}>
@@ -46,7 +46,7 @@ const DonneesPersonnelles = () => {
           Protection des données à caractère personnel
         </Typography>
         <Typography>
-          Le BAL est{" "}
+          Le contrat est{" "}
           <strong>
             construit dans le respect de la vie privée des personnes et applique les standards de sécurité de
             l&apos;État.

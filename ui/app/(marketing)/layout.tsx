@@ -4,7 +4,6 @@ import "react-notion-x/src/styles.css";
 import { DsfrHead } from "@codegouvfr/react-dsfr/next-appdir/DsfrHead";
 import { DsfrProvider } from "@codegouvfr/react-dsfr/next-appdir/DsfrProvider";
 import { getHtmlAttributes } from "@codegouvfr/react-dsfr/next-appdir/getHtmlAttributes";
-import { publicConfig } from "config.public";
 import { Metadata } from "next";
 import Link from "next/link";
 import { PropsWithChildren } from "react";
@@ -18,7 +17,7 @@ export const metadata: Metadata = {
     icon: [{ url: "/favicon.ico" }, { url: "/favicon.svg" }],
     apple: [{ url: "/apple-touch-icon.png" }],
   },
-  title: publicConfig.productMeta.productName,
+  title: "Contrat",
   description: "Un service de la Mission Apprentissage",
 };
 

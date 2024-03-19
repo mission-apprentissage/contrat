@@ -87,7 +87,7 @@ const Footer = () => {
           bottomItem={{
             text: "Journal des évolutions",
             linkProps: {
-              href: "https://github.com/mission-apprentissage/bal/blob/main/CHANGELOG.md",
+              href: "https://github.com/mission-apprentissage/contrat/blob/main/CHANGELOG.md",
             },
           }}
         />,
@@ -96,7 +96,7 @@ const Footer = () => {
           bottomItem={{
             text: "Code source",
             linkProps: {
-              href: "https://github.com/mission-apprentissage/bal",
+              href: "https://github.com/mission-apprentissage/contrat",
             },
           }}
         />,
@@ -105,7 +105,7 @@ const Footer = () => {
           bottomItem={{
             text: "Code source",
             linkProps: {
-              href: "https://github.com/mission-apprentissage/bal",
+              href: "https://github.com/mission-apprentissage/contrat",
             },
           }}
         />,
@@ -114,7 +114,7 @@ const Footer = () => {
           bottomItem={{
             text: `v.${APP_VERSION} © République française ${new Date().getFullYear()}`,
             linkProps: {
-              href: "https://github.com/mission-apprentissage/bal",
+              href: "https://github.com/mission-apprentissage/contrat",
             },
           }}
         />,

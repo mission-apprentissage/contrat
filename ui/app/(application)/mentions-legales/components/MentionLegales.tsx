@@ -52,7 +52,7 @@ const MentionsLegales = () => {
           Mentions légales
         </Typography>
 
-        <Typography>Mentions légales du site « BAL »</Typography>
+        <Typography>Mentions légales du site « Contrat »</Typography>
 
         <Section id={anchors.EditeurDuSite}>
           <Typography variant="h3" gutterBottom>

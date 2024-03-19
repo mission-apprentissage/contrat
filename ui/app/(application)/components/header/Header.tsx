@@ -57,10 +57,10 @@ export const Header = () => {
       }
       homeLinkProps={{
         href: "/",
-        title: "Accueil - BAL",
+        title: "Accueil - Contrat",
       }}
       quickAccessItems={[]}
-      serviceTitle="BAL"
+      serviceTitle="Contrat"
       navigation={navigation}
     />
   );
