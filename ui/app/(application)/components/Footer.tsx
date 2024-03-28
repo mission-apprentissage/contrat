@@ -25,9 +25,6 @@ const Footer = () => {
         imgUrl: "/images/france_relance.svg",
         orientation: "vertical",
       }}
-      websiteMapLinkProps={{
-        href: "/sitemap.xml",
-      }}
       termsLinkProps={{
         href: PAGES.mentionsLegales().path,
       }}
@@ -45,22 +42,13 @@ const Footer = () => {
           }}
         />,
         <FooterBottomItem
-          key="donnees-personnelles"
-          bottomItem={{
-            text: PAGES.donneesPersonnelles().title,
-            linkProps: {
-              href: PAGES.donneesPersonnelles().path,
-            },
-          }}
-        />,
-        <FooterBottomItem
           key="page-aide"
           bottomItem={{
             text: "Page d'aide",
             linkProps: {
               target: "_blank",
               rel: "noopener noreferrer",
-              href: "https://www.notion.so/mission-apprentissage/Documentation-dbb1eddc954441eaa0ba7f5c6404bdc0",
+              href: "https://www.notion.so/mission-apprentissage/Page-d-Aide-FAQ-dbb1eddc954441eaa0ba7f5c6404bdc0?pvs=4",
             },
           }}
         />,
@@ -79,33 +67,6 @@ const Footer = () => {
             text: "À propos",
             linkProps: {
               href: "https://beta.gouv.fr/startups",
-            },
-          }}
-        />,
-        <FooterBottomItem
-          key="journal-evolution"
-          bottomItem={{
-            text: "Journal des évolutions",
-            linkProps: {
-              href: "https://github.com/mission-apprentissage/contrat/blob/main/CHANGELOG.md",
-            },
-          }}
-        />,
-        <FooterBottomItem
-          key="code-source"
-          bottomItem={{
-            text: "Code source",
-            linkProps: {
-              href: "https://github.com/mission-apprentissage/contrat",
-            },
-          }}
-        />,
-        <FooterBottomItem
-          key="code-source"
-          bottomItem={{
-            text: "Code source",
-            linkProps: {
-              href: "https://github.com/mission-apprentissage/contrat",
             },
           }}
         />,

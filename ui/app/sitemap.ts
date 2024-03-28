@@ -11,13 +11,15 @@ function getSitemapItem(page: Page): MetadataRoute.Sitemap[number] {
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
-    getSitemapItem(PAGES.mentionsLegales()),
+    getSitemapItem(PAGES.homepage()),
+    getSitemapItem(PAGES.cerfa()),
     getSitemapItem(PAGES.accessibilite()),
-    getSitemapItem(PAGES.cgu()),
-    getSitemapItem(PAGES.donneesPersonnelles()),
-    getSitemapItem(PAGES.politiqueConfidentialite()),
-    getSitemapItem(PAGES.connexion()),
-    getSitemapItem(PAGES.motDePasseOublie()),
-    getSitemapItem(PAGES.modifierMotDePasse()),
+    // getSitemapItem(PAGES.mentionsLegales()),
+    // getSitemapItem(PAGES.cgu()),
+    // getSitemapItem(PAGES.donneesPersonnelles()),
+    // getSitemapItem(PAGES.politiqueConfidentialite()),
+    // getSitemapItem(PAGES.connexion()),
+    // getSitemapItem(PAGES.motDePasseOublie()),
+    // getSitemapItem(PAGES.modifierMotDePasse()),
   ];
 }
