@@ -13,7 +13,8 @@ const IdccFields = () => {
   const idcss = (getValues("employeur.codeIdccs") as Array<string>)?.filter((i) => !["9998", "9999"].includes(i)) ?? [];
 
   const [_firstIdcc, ...suggestedIdcss] = idcss;
-  const hasMultipleIdccs = suggestedIdcss && suggestedIdcss.length > 1;
+
+  const hasMultipleIdccs = suggestedIdcss && suggestedIdcss.length >= 1;
 
   return (
     <>

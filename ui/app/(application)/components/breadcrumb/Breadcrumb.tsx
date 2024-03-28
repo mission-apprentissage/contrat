@@ -8,7 +8,7 @@ export const PAGES = {
   }),
   mentionsLegales: () => ({
     title: "Mentions Légales",
-    path: "/mentions-legales",
+    path: "https://cfas.apprentissage.beta.gouv.fr/mentions-legales",
   }),
   accessibilite: () => ({
     title: "Accessibilité",
@@ -16,7 +16,7 @@ export const PAGES = {
   }),
   cgu: () => ({
     title: "Conditions Générales d'Utilisation",
-    path: "/cgu",
+    path: "https://cfas.apprentissage.beta.gouv.fr/cgu",
   }),
   donneesPersonnelles: () => ({
     title: "Données Personnelles",
@@ -24,7 +24,7 @@ export const PAGES = {
   }),
   politiqueConfidentialite: () => ({
     title: "Politique de Confidentialité",
-    path: "/politique-confidentialite",
+    path: "https://cfas.apprentissage.beta.gouv.fr/politique-de-confidentialite",
   }),
   connexion: () => ({
     title: "Se connecter",

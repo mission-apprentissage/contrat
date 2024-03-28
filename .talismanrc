@@ -45,6 +45,8 @@ fileignoreconfig:
   checksum: 6ba7398bf1f149cf18bd9188b47126b072b6c71b8231a0bbd59714665991b2ea
 - filename: ui/config.public.ts
   checksum: 914ccdda9ae6f6c8b6154ce40f9fb97c1808c9a3fadd82a15896d463d0f9c8f1
+- filename: ui/app/(application)/components/Footer.tsx
+  checksum: baea7b6079355fbb144474427caed0980c041b4cc836ae4c0e79afbe421e67d3
 scopeconfig:
 - scope: node
 custom_patterns:
