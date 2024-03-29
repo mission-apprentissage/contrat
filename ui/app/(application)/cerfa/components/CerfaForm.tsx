@@ -3,6 +3,7 @@
 import { fr } from "@codegouvfr/react-dsfr";
 import Button from "@codegouvfr/react-dsfr/Button";
 import { Box, Grid, Typography } from "@mui/material";
+import { usePlausible } from "next-plausible";
 import { FC, useEffect } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
@@ -13,6 +14,7 @@ import { activeStepState } from "../atoms/activeStep.atom";
 import { downloadOptionsState } from "../atoms/downloadOptions.atom";
 import { informationMessagesState } from "../atoms/informationMessages.atom";
 import { showOverlayState } from "../atoms/showOverlay.atom";
+import { getFormStatus } from "../completion";
 import { CERFA_STEPS, CerfaStep } from "../utils/cerfa.utils";
 import { downloadFile } from "../utils/form.utils";
 import InputController from "./blocks/inputs/InputController";
@@ -33,6 +35,8 @@ const scrollToSection = () => {
 };
 
 const CerfaForm: FC = () => {
+  const plausible = usePlausible();
+
   const [activeStep, setActiveStep] = useRecoilState(activeStepState);
   const [showOverlay] = useRecoilState(showOverlayState);
   const [_, setInformationMessage] = useRecoilState(informationMessagesState);
@@ -84,6 +88,15 @@ const CerfaForm: FC = () => {
   };
 
   const download = async () => {
+    const formStatus = getFormStatus({ values, errors });
+
+    plausible("Télécharger Cerfa", {
+      props: {
+        includeErrors: downloadOptions.includeErrors,
+        includeGuide: downloadOptions.includeGuide,
+        tauxCompletion: formStatus.completion,
+      },
+    });
     // remove ref from errors
     const err = omitDeep(errors, "ref");
     const data = await apiPostRaw("/cerfa", {

@@ -1,3 +1,4 @@
+import { get } from "lodash-es";
 import { apprentiSchema } from "shared/helpers/cerfa/schema/apprentiSchema";
 import { contratSchema } from "shared/helpers/cerfa/schema/contratSchema";
 import { employeurSchema } from "shared/helpers/cerfa/schema/employeurSchema";
@@ -5,17 +6,12 @@ import { formationSchema } from "shared/helpers/cerfa/schema/formationSchema";
 import { maitreApprentissageSchema } from "shared/helpers/cerfa/schema/maitreApprentissageSchema";
 import { CerfaForm } from "shared/helpers/cerfa/types/cerfa.types";
 
-import cerfaSchema from "./utils/cerfaSchema";
-import { getValues, isEmptyValue } from "./utils/form.utils";
-
-export const getFormStatus = ({ fields, values }: CerfaForm) => {
-  const formErrors = getBlocErrors({ fields, values });
-
-  const contratStatus = getContratCompletion(fields, "contrat", formErrors);
-  const formationStatus = getBlocCompletion(Object.keys(formationSchema), fields, "formation", formErrors);
-  const maitreStatus = getBlocCompletion(Object.keys(maitreApprentissageSchema), fields, "maitre", formErrors);
-  const apprentiStatus = getBlocCompletion(Object.keys(apprentiSchema), fields, "apprenti", formErrors);
-  const employeurStatus = getBlocCompletion(Object.keys(employeurSchema), fields, "employeur", formErrors);
+export const getFormStatus = ({ errors }: CerfaForm) => {
+  const contratStatus = getContratCompletion(Object.keys(contratSchema), errors);
+  const formationStatus = getBlocCompletion(Object.keys(formationSchema), "formation", errors);
+  const maitreStatus = getBlocCompletion(Object.keys(maitreApprentissageSchema), "maitre", errors);
+  const apprentiStatus = getBlocCompletion(Object.keys(apprentiSchema), "apprenti", errors);
+  const employeurStatus = getBlocCompletion(Object.keys(employeurSchema), "employeur", errors);
 
   const cerfaTabCompletion =
     (contratStatus.completion +
@@ -33,18 +29,13 @@ export const getFormStatus = ({ fields, values }: CerfaForm) => {
     employeur: employeurStatus,
     complete: cerfaTabCompletion === 100,
     completion: cerfaTabCompletion,
-    global: {
-      errors: formErrors.reduce((acc, er) => ({ ...acc, [er.target]: er }), {}),
-    },
   };
 };
 
-const getContratCompletion = (fields: any, values: any, formErrors: any) => {
-  const requiredFieldNames = getRequiredFieldNames(Object.keys(contratSchema), fields);
-  const invalidFields = getInvalidFields(requiredFieldNames, fields);
+const getContratCompletion = (fieldNames: any, errors: any) => {
+  const invalidFields = getInvalidFields(fieldNames, errors);
   const completion = calcCompletion({
-    nbRequired: requiredFieldNames.length,
-    nbBlocErrors: formErrors.filter((error: any) => error.target === "avantageNature").length,
+    nbRequired: fieldNames.length,
     nbFieldErrors: invalidFields.length,
   });
   return {
@@ -54,13 +45,11 @@ const getContratCompletion = (fields: any, values: any, formErrors: any) => {
   };
 };
 
-const getBlocCompletion = (fieldNames: any, fields: any, blockName: any, formErrors: any) => {
-  const requiredFieldNames = getRequiredFieldNames(fieldNames, fields);
-  const invalidFields = getInvalidFields(requiredFieldNames, fields);
+const getBlocCompletion = (fieldNames: any, blockName: any, errors: any) => {
+  const invalidFields = getInvalidFields(fieldNames, errors);
 
   const completion = calcCompletion({
-    nbRequired: requiredFieldNames.length,
-    nbBlocErrors: formErrors.filter((error: any) => error.blocCompletion === blockName).length,
+    nbRequired: fieldNames.length,
     nbFieldErrors: invalidFields.length,
   });
 
@@ -71,48 +60,12 @@ const getBlocCompletion = (fieldNames: any, fields: any, blockName: any, formErr
   };
 };
 
-const calcCompletion = ({ nbRequired, nbFieldErrors, nbBlocErrors }: any) =>
-  Math.round(((nbRequired - nbFieldErrors) / (nbRequired + nbBlocErrors)) * 100);
+const calcCompletion = ({ nbRequired, nbFieldErrors }: any) => Math.round((nbFieldErrors / nbRequired) * 100);
 
-const getRequiredFieldNames = (fieldNames: any, fields: any) => {
-  const values = getValues(fields);
-  return fieldNames.filter((current: any) => {
-    if (current.includes("[]")) return false;
-    const field = fields[current];
-    if (!field) return false;
-    if (field.completion === false) return false;
-    if (field.completion) {
-      return field.completion?.({ values });
-    }
-    return field.required;
-  });
-};
-
-const getBlocErrors = ({ fields, values }: any) => {
-  const blockErrors: any[] = [];
-  cerfaSchema.logics.forEach((logic) => {
-    if (!logic.target) return;
-    // @ts-expect-error: todo
-    const { error } = logic.process({ values, fields }) ?? {};
-    if (error) {
-      blockErrors.push({
-        target: logic.target,
-        error,
-        blocCompletion: logic.blocCompletion,
-        deps: logic.deps,
-        touched: logic.deps.some((dep) => fields[dep].touched),
-      });
-    }
-  });
-  return blockErrors;
-};
-
-const getInvalidFields = (fieldNames: string[], fields: any) => {
+const getInvalidFields = (fieldNames: string[], errors: any) => {
   return fieldNames
     .filter((name) => {
-      const field = fields[name];
-      if (!field) return false;
-      return isEmptyValue(field.value) || !field.success || field.error;
+      return get(errors, name);
     })
-    .map((name) => fields[name]);
+    .map((name) => get(errors, name));
 };

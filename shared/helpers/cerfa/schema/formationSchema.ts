@@ -127,7 +127,7 @@ Le code diplôme peut être recherché sur le [catalogue des formations en appre
       },
       {
         type: "bonus",
-        content: `Ce code à 8 caractères permet d'identifier un titre ou diplôme préparés par la voie de l'apprentissages.`,
+        content: `Ce code à 8 caractères permet d'identifier un titre ou diplôme préparé par la voie de l'apprentissage.`,
       },
     ],
   },
