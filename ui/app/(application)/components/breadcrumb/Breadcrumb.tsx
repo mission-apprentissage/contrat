@@ -26,6 +26,10 @@ export const PAGES = {
     title: "Politique de Confidentialité",
     path: "https://cfas.apprentissage.beta.gouv.fr/politique-de-confidentialite",
   }),
+  stats: () => ({
+    title: "Statistiques",
+    path: "/stats",
+  }),
   connexion: () => ({
     title: "Se connecter",
     path: "/auth/connexion",
@@ -62,6 +66,7 @@ export const PAGES = {
     title: "Fiche utilisateur",
     path: `/admin/utilisateurs/${id}`,
   }),
+
   cerfa: () => ({
     title: "Cerfa",
     path: "/cerfa",

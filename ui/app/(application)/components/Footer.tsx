@@ -62,6 +62,15 @@ const Footer = () => {
           }}
         />,
         <FooterBottomItem
+          key="statistiques"
+          bottomItem={{
+            text: PAGES.stats().title,
+            linkProps: {
+              href: PAGES.stats().path,
+            },
+          }}
+        />,
+        <FooterBottomItem
           key="a-propos"
           bottomItem={{
             text: "À propos",

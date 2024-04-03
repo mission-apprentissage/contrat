@@ -11,6 +11,7 @@ export interface PublicConfig {
     productName: string;
     repoName: string;
   };
+  plausible?: string;
 }
 
 function getProductionPublicConfig(): PublicConfig {
@@ -26,6 +27,7 @@ function getProductionPublicConfig(): PublicConfig {
     apiEndpoint: `https://${host}/api`,
     version: getVersion(),
     productMeta: getProductMeta(),
+    plausible: "https://plausible.io/share/contrat.apprentissage.beta.gouv.fr?auth=CtGFm-ycrH9-Q8OSRu9EP",
   };
 }
 
@@ -42,6 +44,7 @@ function getRecettePublicConfig(): PublicConfig {
     apiEndpoint: `https://${host}/api`,
     version: getVersion(),
     productMeta: getProductMeta(),
+    plausible: "https://plausible.io/share/contrat-recette.apprentissage.beta.gouv.fr?auth=hRwxKp7jzbxXrRhjXAvDf",
   };
 }
 
