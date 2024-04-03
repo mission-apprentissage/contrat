@@ -24,6 +24,7 @@ const Header: FC = () => {
         iconPosition="right"
         linkProps={{
           href: PAGES.cerfa().path,
+          className: "plausible-event-name=Accéder+Au+Formulaire plausible-event-position=header",
         }}
       >
         Commencer

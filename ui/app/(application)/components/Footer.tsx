@@ -71,6 +71,15 @@ const Footer = () => {
           }}
         />,
         <FooterBottomItem
+          key="code-source"
+          bottomItem={{
+            text: "Code source",
+            linkProps: {
+              href: "https://github.com/mission-apprentissage/contrat",
+            },
+          }}
+        />,
+        <FooterBottomItem
           key="version"
           bottomItem={{
             text: `v.${APP_VERSION} © République française ${new Date().getFullYear()}`,

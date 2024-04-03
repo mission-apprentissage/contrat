@@ -93,6 +93,7 @@ export interface CerfaForm {
   signal?: any;
   cache?: any;
   fields?: any;
+  errors?: any;
 }
 
 interface ControlResult {

@@ -53,7 +53,7 @@ export const codeDiplomeControl: CerfaControl[] = [
 
       return {
         cascade: {
-          "formation.typeDiplome": { value: diplome, cascade: false },
+          "formation.typeDiplome": { value: diplome, cascade: false, success: true },
         },
       };
     },

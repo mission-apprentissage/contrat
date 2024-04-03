@@ -70,6 +70,7 @@ const Advantages: FC = () => {
           iconPosition="right"
           linkProps={{
             href: PAGES.cerfa().path,
+            className: "plausible-event-name=Accéder+Au+Formulaire plausible-event-position=avantages",
           }}
         >
           Commencer la saisie
