@@ -3,12 +3,14 @@
 import { fr } from "@codegouvfr/react-dsfr";
 import Button from "@codegouvfr/react-dsfr/Button";
 import { Box, Grid, Typography } from "@mui/material";
+import { useSearchParams } from "next/navigation";
 import { usePlausible } from "next-plausible";
 import { FC, useEffect } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
 import { omitDeep } from "shared/helpers/cerfa/utils/omitDeep";
 import { apiPostRaw } from "utils/api.utils";
+import { EVENTS, getTrackingPropsFromParams } from "utils/tracking";
 
 import { activeStepState } from "../atoms/activeStep.atom";
 import { downloadOptionsState } from "../atoms/downloadOptions.atom";
@@ -36,6 +38,7 @@ const scrollToSection = () => {
 
 const CerfaForm: FC = () => {
   const plausible = usePlausible();
+  const searchParams = useSearchParams();
 
   const [activeStep, setActiveStep] = useRecoilState(activeStepState);
   const [showOverlay] = useRecoilState(showOverlayState);
@@ -90,11 +93,12 @@ const CerfaForm: FC = () => {
   const download = async () => {
     const formStatus = getFormStatus({ values, errors });
 
-    plausible("Télécharger Cerfa", {
+    plausible(EVENTS.DOWNLOAD_CERFA, {
       props: {
         includeErrors: downloadOptions.includeErrors,
         includeGuide: downloadOptions.includeGuide,
         tauxCompletion: formStatus.completion,
+        ...getTrackingPropsFromParams(searchParams),
       },
     });
     // remove ref from errors
