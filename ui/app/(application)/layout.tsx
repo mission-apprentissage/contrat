@@ -4,7 +4,6 @@ import "react-notion-x/src/styles.css";
 import { DsfrHead } from "@codegouvfr/react-dsfr/next-appdir/DsfrHead";
 import { DsfrProvider } from "@codegouvfr/react-dsfr/next-appdir/DsfrProvider";
 import { getHtmlAttributes } from "@codegouvfr/react-dsfr/next-appdir/getHtmlAttributes";
-import { publicConfig } from "config.public";
 import { AuthContextProvider } from "context/AuthContext";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -35,8 +34,10 @@ export const metadata: Metadata = {
     icon: [{ url: "/favicon.ico" }, { url: "/favicon.svg" }],
     apple: [{ url: "/apple-touch-icon.png" }],
   },
-  title: publicConfig.productMeta.productName,
-  description: "Un service de la Mission Apprentissage",
+  title: "Formulaire contrat d'apprentissage",
+  description:
+    "Formulaire guidé : nombreux contrôles pour éviter les erreurs, listes déroulantes et complétion automatique pour faciliter la saisie, calcul de rémunération…",
+  keywords: ["contrat", "apprentissage", "formulaire"],
 };
 
 export default async function RootLayout({ children }: PropsWithChildren) {

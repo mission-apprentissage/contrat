@@ -17,8 +17,10 @@ export const metadata: Metadata = {
     icon: [{ url: "/favicon.ico" }, { url: "/favicon.svg" }],
     apple: [{ url: "/apple-touch-icon.png" }],
   },
-  title: "Contrat",
-  description: "Un service de la Mission Apprentissage",
+  title: "CERFA contrat d’apprentissage",
+  description:
+    "Générez votre CERFA contrat d’apprentissage (10103*10): formulaire de saisie guidée en accès libre sans connexion, simple, rapide et sans erreur.",
+  keywords: ["apprentissage", "contrat", "cerfa"],
 };
 
 export default async function RootLayout({ children }: PropsWithChildren) {
