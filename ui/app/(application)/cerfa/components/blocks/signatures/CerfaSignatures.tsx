@@ -8,7 +8,11 @@ const CerfaSignatures: FC = () => {
     <Box>
       <Box mb={2}>
         <Typography gutterBottom>
-          Si vous êtes un CFA, vous devrez ajouter votre cachet et la signature du directeur sur le document final.
+          Si vous êtes un CFA, vous devrez ajouter votre cachet et la signature du directeur sur le document final
+          (après téléchargement).
+        </Typography>
+        <Typography gutterBottom>
+          Si vous représentez une entreprise, veuillez vérifier le point suivant (et le cocher si valide) :
         </Typography>
       </Box>
       <InputController name="signatures.attestationPiecesJustificatives" />

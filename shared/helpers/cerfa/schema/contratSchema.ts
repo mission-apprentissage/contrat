@@ -297,7 +297,7 @@ Dans le cadre d’un CDI, vous devez donc également préciser la date de fin de
     ],
   },
   "contrat.dateSignature": {
-    label: "Date de signature du présent contrat",
+    label: "Date de conclusion/signature du présent contrat",
     fieldType: "date",
     required: true,
     requiredMessage: "La date de signature du contrat est obligatoire",
