@@ -2,6 +2,7 @@ import { ReadonlyURLSearchParams } from "next/navigation";
 
 export const EVENTS = {
   DOWNLOAD_CERFA: "Télécharger Cerfa",
+  COMMENCER_CERFA: "click_commencer",
 } as const;
 
 const SOURCES = {
