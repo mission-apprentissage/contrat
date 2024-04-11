@@ -1,6 +1,9 @@
 import Button from "@codegouvfr/react-dsfr/Button";
 import { Box, Grid, Typography } from "@mui/material";
+import { useRouter } from "next/navigation";
+import { usePlausible } from "next-plausible";
 import { FC } from "react";
+import { EVENTS } from "utils/tracking";
 
 import { PAGES } from "../../../(application)/components/breadcrumb/Breadcrumb";
 import {
@@ -15,6 +18,18 @@ import notebook from "./notebook.png";
 import storage from "./storage.png";
 
 const Advantages: FC = () => {
+  const plausible = usePlausible();
+  const { push } = useRouter();
+
+  const onCerfaNavigate = () => {
+    plausible(EVENTS.COMMENCER_CERFA, {
+      props: {
+        position_bouton: "avantages",
+      },
+    });
+    push(PAGES.cerfa().path);
+  };
+
   return (
     <section>
       <Grid container>
@@ -64,15 +79,7 @@ const Advantages: FC = () => {
         </Grid>
       </Grid>
       <StyledCallToActionContainer>
-        <Button
-          priority="secondary"
-          iconId="fr-icon-arrow-right-line"
-          iconPosition="right"
-          linkProps={{
-            href: PAGES.cerfa().path,
-            className: "plausible-event-name=Accéder+Au+Formulaire plausible-event-position=avantages",
-          }}
-        >
+        <Button priority="secondary" iconId="fr-icon-arrow-right-line" iconPosition="right" onClick={onCerfaNavigate}>
           Commencer la saisie
         </Button>
       </StyledCallToActionContainer>
