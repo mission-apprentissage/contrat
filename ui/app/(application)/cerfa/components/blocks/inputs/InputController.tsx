@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { useFormContext } from "react-hook-form";
+import { FieldEnum } from "shared/helpers/cerfa/types/cerfa.types";
 
 import { getFieldSchema } from "../../../utils/cerfaSchema";
 import InputField from "./InputField";
@@ -19,7 +20,7 @@ const InputController: FC<Props> = ({ name }) => {
   return (
     <InputField
       name={name}
-      fieldType={fieldSchema?.fieldType ?? "text"}
+      fieldType={(fieldSchema?.fieldType as FieldEnum) ?? "text"}
       fieldSchema={computedFieldSchema}
       fieldMethods={fieldMethods}
     />
