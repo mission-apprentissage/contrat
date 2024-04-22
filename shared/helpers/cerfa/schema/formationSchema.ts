@@ -101,7 +101,7 @@ Dans ce cas, il faudra cocher cette information dans la convention de formation 
     messages: [
       {
         type: "bonus",
-        content: `Le code RNCP peut être recherché sur le site [France compétences](https://www.francecompetences.fr/recherche_certificationprofessionnelle/).
+        content: `Le code RNCP peut être recherché sur le site [France compétences](https://www.francecompetences.fr/recherche-resultats/?types=certification&search=&pageType=certification&active=1&refiningCodes=RNCP).
 Le code diplôme peut être déduit du code RNCP et à l'inverse, vous pouvez renseigner un code diplôme pour déduire le code RNCP correspondant.`,
       },
     ],

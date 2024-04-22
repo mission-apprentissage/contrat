@@ -9,6 +9,17 @@ export type FieldType =
   | "consent"
   | "phone";
 
+export enum FieldEnum {
+  "text" = "text",
+  "number" = "number",
+  "select" = "select",
+  "radio" = "radio",
+  "email" = "email",
+  "date" = "date",
+  "numberStepper" = "numberStepper",
+  "consent" = "consent",
+  "phone" = "phone",
+}
 export interface SelectOption {
   label: string;
   value: string;

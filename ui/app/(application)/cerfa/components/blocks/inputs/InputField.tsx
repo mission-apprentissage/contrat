@@ -5,7 +5,7 @@ import { Box, Typography } from "@mui/material";
 import { FC } from "react";
 import { FieldValues, UseFormRegisterReturn, UseFormReturn } from "react-hook-form";
 import { useRecoilState } from "recoil";
-import { CerfaField, FieldType } from "shared/helpers/cerfa/types/cerfa.types";
+import { CerfaField, FieldEnum } from "shared/helpers/cerfa/types/cerfa.types";
 
 import { activeFieldState, fieldsState } from "../../../atoms/fields.atom";
 import { informationMessagesState } from "../../../atoms/informationMessages.atom";
@@ -27,7 +27,7 @@ import TextInput from "./TextInput";
 
 interface Props {
   name: string;
-  fieldType: FieldType;
+  fieldType: FieldEnum;
   fieldMethods: UseFormReturn<FieldValues, any, undefined>;
   fieldSchema: CerfaField;
 }
@@ -37,16 +37,29 @@ export type InputFieldProps = Pick<Props, "name" | "fieldMethods" | "fieldSchema
     inputProps: UseFormRegisterReturn & { onFocus: () => void; type?: string };
   };
 
-const TypesMapping: Record<FieldType, FC<InputFieldProps>> = {
-  text: TextInput,
-  number: NumberInput,
-  numberStepper: NumberStepperInput,
-  email: TextInput,
-  phone: PhoneInput,
-  date: DateInput,
-  radio: RadioInput,
-  select: SelectInput,
-  consent: ConsentInput,
+const TypesMapping: Record<FieldEnum, FC<InputFieldProps>> = {
+  [FieldEnum.text]: TextInput,
+  [FieldEnum.number]: NumberInput,
+  [FieldEnum.numberStepper]: NumberStepperInput,
+  [FieldEnum.email]: TextInput,
+  [FieldEnum.phone]: PhoneInput,
+  [FieldEnum.date]: DateInput,
+  [FieldEnum.radio]: RadioInput,
+  [FieldEnum.select]: SelectInput,
+  [FieldEnum.consent]: ConsentInput,
+} as const;
+
+const identity = (_: any) => _;
+const TypesTransformMapping: Record<FieldEnum, (a: any) => any> = {
+  [FieldEnum.date]: (dateString: string) => dateString.split("-").reverse().join("/"),
+  [FieldEnum.text]: identity,
+  [FieldEnum.number]: identity,
+  [FieldEnum.numberStepper]: identity,
+  [FieldEnum.email]: identity,
+  [FieldEnum.phone]: identity,
+  [FieldEnum.radio]: identity,
+  [FieldEnum.select]: identity,
+  [FieldEnum.consent]: identity,
 } as const;
 
 const InputField: FC<Props> = ({ fieldType, ...fieldProps }) => {
@@ -70,6 +83,7 @@ const InputField: FC<Props> = ({ fieldType, ...fieldProps }) => {
     required: fieldSchema.required && fieldSchema.requiredMessage,
     deps: getFieldDeps(name),
     pattern: fieldSchema.pattern,
+    setValueAs: TypesTransformMapping[fieldType],
     validate: {
       loading: () => {
         if (fieldSchema.showsOverlay) {

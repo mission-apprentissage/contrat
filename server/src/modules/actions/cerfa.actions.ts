@@ -86,6 +86,10 @@ export const createCerfaPdf = async (rawData: Record<string, any>) => {
     }`;
   }
 
+  if (rawData.formation?.rncp && rawData.formation?.rncp.startsWith("RNCP")) {
+    rawData.formation.rncp = rawData.formation.rncp.substring(4);
+  }
+
   pdfFields
     .filter((field) => field.attribute && field.type === "PDFTextField")
     .forEach((field) => {
