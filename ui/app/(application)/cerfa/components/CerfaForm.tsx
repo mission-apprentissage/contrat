@@ -114,10 +114,10 @@ const CerfaForm: FC = () => {
       },
     });
 
-    let filename = "cerfa_10103*10.pdf";
+    let filename = "cerfa_10103*11.pdf";
 
     if (data.headers.get("Content-Type") === "application/zip") {
-      filename = "cerfa_10103*10.zip";
+      filename = "cerfa_10103*11.zip";
     }
 
     if (values.apprenti.nom && values.apprenti.prenom) {
@@ -153,7 +153,7 @@ const CerfaForm: FC = () => {
         </Grid>
         <Grid item xs={6}>
           <Typography variant="h1" mb={2}>
-            Cerfa 10103*10
+            Cerfa 10103*11 (FA13)
           </Typography>
           <Box mx={1}>
             <InputController name="contrat.modeContractuel" />
