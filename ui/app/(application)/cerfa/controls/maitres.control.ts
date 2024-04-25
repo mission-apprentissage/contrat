@@ -1,6 +1,6 @@
-import { isFuture, parseISO } from "date-fns";
+import { isFuture } from "date-fns";
 import { CerfaControl } from "shared/helpers/cerfa/types/cerfa.types";
-import { caclAgeAtDate } from "shared/helpers/cerfa/utils/dates";
+import { caclAgeAtDate, customParseISODate } from "shared/helpers/cerfa/utils/dates";
 
 export const maitresControl: CerfaControl[] = [
   {
@@ -9,7 +9,7 @@ export const maitresControl: CerfaControl[] = [
       if (!values.maitre1.dateNaissance || !values.contrat.dateDebutContrat) {
         return;
       }
-      const maitreDateNaissance = parseISO(values.maitre1.dateNaissance);
+      const maitreDateNaissance = customParseISODate(values.maitre1.dateNaissance);
       if (isFuture(maitreDateNaissance)) {
         return { error: "La date de naissance ne peut pas être dans le futur" };
       }
@@ -36,7 +36,7 @@ export const maitresControl: CerfaControl[] = [
       if (!values.maitre2.dateNaissance || !values.contrat.dateDebutContrat) {
         return;
       }
-      const maitreDateNaissance = parseISO(values.maitre2.dateNaissance);
+      const maitreDateNaissance = customParseISODate(values.maitre2.dateNaissance);
       if (isFuture(maitreDateNaissance)) {
         return { error: "La date de naissance ne peut pas être dans le futur" };
       }

@@ -1,8 +1,8 @@
 import { differenceInYears, parseISO } from "date-fns";
 
 export const caclAgeAtDate = (dateNaissanceString: string, dateString: string) => {
-  const dateNaissance = parseISO(dateNaissanceString);
-  const dateObj = parseISO(dateString);
+  const dateNaissance = customParseISODate(dateNaissanceString);
+  const dateObj = customParseISODate(dateString);
 
   // Note: differenceInYears already gives a whole number
   const years = differenceInYears(dateObj, dateNaissance);
@@ -13,3 +13,5 @@ export const caclAgeAtDate = (dateNaissanceString: string, dateString: string) =
     exactAge: age, // since differenceInYears already returns a whole number
   };
 };
+
+export const customParseISODate = (str: string) => parseISO(str.split("/").reverse().join("-"));

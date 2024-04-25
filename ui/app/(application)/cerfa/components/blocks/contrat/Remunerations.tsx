@@ -1,11 +1,12 @@
 import { fr } from "@codegouvfr/react-dsfr";
 import { Notice } from "@codegouvfr/react-dsfr/Notice";
 import { Box, Typography } from "@mui/material";
-import { format, getDate, parseISO, setDate, subMonths } from "date-fns";
+import { format, getDate, setDate, subMonths } from "date-fns";
 import React from "react";
 import { useFormContext } from "react-hook-form";
 import { useRecoilState } from "recoil";
 import { shouldShowRemunerationsAnnuelles } from "shared/helpers/cerfa/domains/contrat/shouldShowRemunerationsAnnuelles";
+import { customParseISODate } from "shared/helpers/cerfa/utils/dates";
 import { formatDate } from "utils/date.utils";
 
 import InformationMessage from "../../../../components/InformationMessage";
@@ -142,7 +143,7 @@ En savoir plus sur les situations spécifiques sur le [site du Ministère du Tra
                   (() => {
                     const age = annee.newSeuil;
                     const applicationDate = formatDate(annee.dateDebut);
-                    const birthday = getDate(parseISO(apprentiDateNaissance));
+                    const birthday = getDate(customParseISODate(apprentiDateNaissance));
                     const birthdayDate = birthday
                       ? format(setDate(subMonths(new Date(annee.dateDebut), 1), birthday), "dd/MM/yyyy")
                       : undefined;

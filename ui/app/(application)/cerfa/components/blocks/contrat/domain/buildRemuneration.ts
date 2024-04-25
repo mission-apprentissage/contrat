@@ -1,16 +1,5 @@
-import {
-  addYears,
-  format,
-  formatISO,
-  getMonth,
-  getYear,
-  isBefore,
-  parseISO,
-  setDate,
-  setMonth,
-  subDays,
-} from "date-fns";
-
+import { addYears, format, formatISO, getMonth, getYear, isBefore, setDate, setMonth, subDays } from "date-fns";
+import { customParseISODate } from "shared/helpers/cerfa/utils/dates";
 const LATEST_SMIC_YEAR = 2022;
 
 const SMICs = {
@@ -23,9 +12,9 @@ const SMICs = {
         heuresHebdomadaires: 35,
         minimumGaranti: 3.86,
         dateEntreeEnVigueur: "01/05/2022",
-        dateEntreeEnVigueurObj: parseISO("01/05/2022"),
+        dateEntreeEnVigueurObj: customParseISODate("01/05/2022"),
         dateParutionJo: "20/04/2022",
-        dateParutionJoObj: parseISO("20/04/2022"),
+        dateParutionJoObj: customParseISODate("20/04/2022"),
         exceptions: {
           976: {
             departement: 976,
@@ -43,9 +32,9 @@ const SMICs = {
         heuresHebdomadaires: 35,
         minimumGaranti: 3.76,
         dateEntreeEnVigueur: "01/01/2022",
-        dateEntreeEnVigueurObj: parseISO("01/01/2022"),
+        dateEntreeEnVigueurObj: customParseISODate("01/01/2022"),
         dateParutionJo: "22/12/2021",
-        dateParutionJoObj: parseISO("22/12/2021"),
+        dateParutionJoObj: customParseISODate("22/12/2021"),
         exceptions: {
           976: {
             departement: 976,
@@ -67,9 +56,9 @@ const SMICs = {
         heuresHebdomadaires: 35,
         minimumGaranti: 3.73,
         dateEntreeEnVigueur: "01/10/2021",
-        dateEntreeEnVigueurObj: parseISO("01/10/2021"),
+        dateEntreeEnVigueurObj: customParseISODate("01/10/2021"),
         dateParutionJo: "30/09/2021",
-        dateParutionJoObj: parseISO("30/09/2021"),
+        dateParutionJoObj: customParseISODate("30/09/2021"),
         exceptions: {
           976: {
             departement: 976,
@@ -87,9 +76,9 @@ const SMICs = {
         heuresHebdomadaires: 35,
         minimumGaranti: 3.65,
         dateEntreeEnVigueur: "01/01/2021",
-        dateEntreeEnVigueurObj: parseISO("01/01/2021"),
+        dateEntreeEnVigueurObj: customParseISODate("01/01/2021"),
         dateParutionJo: "17/12/2020",
-        dateParutionJoObj: parseISO("17/12/2020"),
+        dateParutionJoObj: customParseISODate("17/12/2020"),
         exceptions: {
           976: {
             departement: 976,
@@ -111,9 +100,9 @@ const SMICs = {
         heuresHebdomadaires: 35,
         minimumGaranti: 3.65,
         dateEntreeEnVigueur: "01/01/2020",
-        dateEntreeEnVigueurObj: parseISO("01/01/2020"),
+        dateEntreeEnVigueurObj: customParseISODate("01/01/2020"),
         dateParutionJo: "19/12/2019",
-        dateParutionJoObj: parseISO("19/12/2019"),
+        dateParutionJoObj: customParseISODate("19/12/2019"),
         exceptions: {
           976: {
             departement: 976,
@@ -135,9 +124,9 @@ const SMICs = {
         heuresHebdomadaires: 35,
         minimumGaranti: 3.62,
         dateEntreeEnVigueur: "01/01/2019",
-        dateEntreeEnVigueurObj: parseISO("01/01/2019"),
+        dateEntreeEnVigueurObj: customParseISODate("01/01/2019"),
         dateParutionJo: "20/12/2018",
-        dateParutionJoObj: parseISO("20/12/2018"),
+        dateParutionJoObj: customParseISODate("20/12/2018"),
         exceptions: {
           976: {
             departement: 976,
@@ -159,9 +148,9 @@ const SMICs = {
         heuresHebdomadaires: 35,
         minimumGaranti: 3.57,
         dateEntreeEnVigueur: "01/01/2018",
-        dateEntreeEnVigueurObj: parseISO("01/01/2018"),
+        dateEntreeEnVigueurObj: customParseISODate("01/01/2018"),
         dateParutionJo: "21/12/2017",
-        dateParutionJoObj: parseISO("21/12/2017"),
+        dateParutionJoObj: customParseISODate("21/12/2017"),
         exceptions: {
           976: {
             departement: 976,
@@ -192,9 +181,9 @@ const ceilUp = (x: number) => Math.ceil(x * 100) / 100;
 
 export const buildRemuneration = (data: any) => {
   const selectedTaux = data.selectedTaux ?? {};
-  const dateDebutContrat = parseISO(data.dateDebutContrat);
-  const dateFinContrat = parseISO(data.dateFinContrat);
-  const apprentiDateNaissance = parseISO(data.apprentiDateNaissance);
+  const dateDebutContrat = customParseISODate(data.dateDebutContrat);
+  const dateFinContrat = customParseISODate(data.dateFinContrat);
+  const apprentiDateNaissance = customParseISODate(data.apprentiDateNaissance);
   const isAnniversaireInLastMonth = getMonth(dateFinContrat) === getMonth(apprentiDateNaissance);
 
   const dateFinA1 = subDays(addYears(dateDebutContrat, 1), 1);

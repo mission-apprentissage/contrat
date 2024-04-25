@@ -1,7 +1,7 @@
-import { addMonths, format, getDate, getMonth, getYear, parse, parseISO, setDate, setMonth, subDays } from "date-fns";
+import { addMonths, format, getDate, getMonth, getYear, parse, setDate, setMonth, subDays } from "date-fns";
 import addYears from "date-fns/addYears";
 import { fr } from "date-fns/locale";
-
+import { customParseISODate } from "shared/helpers/cerfa/utils/dates";
 const parseDate = (date: string): Date => {
   return parse(date, "P", new Date(), { locale: fr });
 };
@@ -275,9 +275,9 @@ const ceilUp = (x: number) => Math.ceil(x * 100) / 100;
 
 export const buildRemuneration = (data: any) => {
   const selectedTaux = data.selectedTaux ?? {};
-  const dateDebutContrat = parseISO(data.dateDebutContrat);
-  const dateFinContrat = parseISO(data.dateFinContrat);
-  const apprentiDateNaissance = parseISO(data.apprentiDateNaissance);
+  const dateDebutContrat = customParseISODate(data.dateDebutContrat);
+  const dateFinContrat = customParseISODate(data.dateFinContrat);
+  const apprentiDateNaissance = customParseISODate(data.apprentiDateNaissance);
   const isAnniversaireInLastMonth = getMonth(dateFinContrat) === getMonth(apprentiDateNaissance);
   const isAnniversaireDebutContrat =
     getDate(dateDebutContrat) === getDate(apprentiDateNaissance) &&
