@@ -84,8 +84,6 @@ const CerfaForm: FC = () => {
   const values = methods.watch();
   const errors = methods.formState.errors;
 
-  console.log({ values, errors });
-
   const onSubmit: SubmitHandler<any> = (values) => {
     console.log("submitted", { values, errors });
   };

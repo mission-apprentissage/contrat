@@ -1,5 +1,6 @@
-import { format, parseISO } from "date-fns";
+import { format } from "date-fns";
 import fr from "date-fns/locale/fr";
+import { customParseISODate } from "shared/helpers/cerfa/utils/dates";
 
 export const prettyPrintDate = (date: string) => {
   const event = new Date(date);
@@ -15,7 +16,7 @@ export const prettyPrintDate = (date: string) => {
 };
 
 export const formatDate = (date: string, dateFormat = "dd/MM/yyyy") => {
-  return format(parseISO(date), dateFormat, {
+  return format(customParseISODate(date), dateFormat, {
     locale: fr,
   });
 };

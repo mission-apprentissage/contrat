@@ -1,12 +1,12 @@
-import { isFuture, parseISO } from "date-fns";
+import { isFuture } from "date-fns";
 import { CerfaControl } from "shared/helpers/cerfa/types/cerfa.types";
-import { caclAgeAtDate } from "shared/helpers/cerfa/utils/dates";
+import { caclAgeAtDate, customParseISODate } from "shared/helpers/cerfa/utils/dates";
 
 export const ageApprentiControl: CerfaControl[] = [
   {
     deps: ["apprenti.dateNaissance"],
     process: ({ values }) => {
-      const dateNaissance = parseISO(values.apprenti.dateNaissance);
+      const dateNaissance = customParseISODate(values.apprenti.dateNaissance);
 
       if (isFuture(dateNaissance)) {
         return { error: "La date de naissance ne peut pas être dans le futur" };

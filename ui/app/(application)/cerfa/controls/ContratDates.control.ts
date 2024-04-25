@@ -1,7 +1,6 @@
-import { addMonths, differenceInMonths, isAfter, isBefore, parseISO, startOfDay } from "date-fns";
+import { addMonths, differenceInMonths, isAfter, isBefore, startOfDay } from "date-fns";
 import { CerfaControl, InformationMessage } from "shared/helpers/cerfa/types/cerfa.types";
-import { caclAgeAtDate } from "shared/helpers/cerfa/utils/dates";
-
+import { caclAgeAtDate, customParseISODate } from "shared/helpers/cerfa/utils/dates";
 export const ContratDatesControl: CerfaControl[] = [
   {
     deps: ["contrat.dateDebutContrat"],
@@ -80,8 +79,8 @@ export const ContratDatesControl: CerfaControl[] = [
         contrat: { dateDebutContrat, dateEffetAvenant },
       } = values;
       if (!dateDebutContrat || !dateEffetAvenant) return;
-      const dateDebutContratDate = parseISO(dateDebutContrat);
-      const dateEffetAvenantDate = parseISO(dateEffetAvenant);
+      const dateDebutContratDate = customParseISODate(dateDebutContrat);
+      const dateEffetAvenantDate = customParseISODate(dateEffetAvenant);
       if (isAfter(dateDebutContratDate, dateEffetAvenantDate)) {
         return {
           error: "La date de début de contrat ne peut pas être après la date d'effet de l'avenant",
@@ -97,7 +96,7 @@ export const ContratDatesControl: CerfaControl[] = [
         contrat: { dateDebutContrat, dateFinContrat },
       } = values;
       if (!dateFinContrat) return;
-      const dateFinContratDate = parseISO(dateFinContrat);
+      const dateFinContratDate = customParseISODate(dateFinContrat);
 
       if (isBefore(dateFinContratDate, startOfDay(new Date()))) {
         return {
@@ -139,8 +138,8 @@ export const ContratDatesControl: CerfaControl[] = [
         contrat: { dateFinContrat, dateEffetAvenant },
       } = values;
       if (!dateFinContrat || !dateEffetAvenant) return;
-      const dateFinContratDate = parseISO(dateFinContrat);
-      const dateEffetAvenantDate = parseISO(dateEffetAvenant);
+      const dateFinContratDate = customParseISODate(dateFinContrat);
+      const dateEffetAvenantDate = customParseISODate(dateEffetAvenant);
       if (isBefore(dateFinContratDate, dateEffetAvenantDate)) {
         return {
           error: "La date de fin de contrat ne peut pas être avant la date d'effet de l'avenant",
@@ -157,8 +156,8 @@ export const ContratDatesControl: CerfaControl[] = [
       } = values;
 
       if (!dateSignature || !dateDebutFormation) return;
-      const dateSignatureDate = parseISO(values.contrat.dateSignature);
-      const dateDebutFormationDate = parseISO(values.formation.dateDebutFormation);
+      const dateSignatureDate = customParseISODate(values.contrat.dateSignature);
+      const dateDebutFormationDate = customParseISODate(values.formation.dateDebutFormation);
 
       if (isBefore(dateDebutFormationDate, dateSignatureDate)) {
         return {
@@ -177,8 +176,8 @@ export const ContratDatesControl: CerfaControl[] = [
       } = values;
 
       if (!dateFinContrat || !dateFinFormation) return;
-      const dateFinContratDate = parseISO(dateFinContrat);
-      const dateFinFormationDate = parseISO(dateFinFormation);
+      const dateFinContratDate = customParseISODate(dateFinContrat);
+      const dateFinFormationDate = customParseISODate(dateFinFormation);
       const dateFinFormation3MonthsAfter = addMonths(dateFinFormationDate, 3);
 
       if (isAfter(dateFinContratDate, dateFinFormation3MonthsAfter)) {
@@ -197,8 +196,8 @@ export const ContratDatesControl: CerfaControl[] = [
 
       if (!dateDebutContrat || !dateFinContrat) return;
 
-      const dateDebutContratDate = parseISO(dateDebutContrat);
-      const dateFinContratDate = parseISO(dateFinContrat);
+      const dateDebutContratDate = customParseISODate(dateDebutContrat);
+      const dateFinContratDate = customParseISODate(dateFinContrat);
 
       const dureeContrat = differenceInMonths(dateFinContratDate, dateDebutContratDate);
 
@@ -239,7 +238,7 @@ export const ContratDatesControl: CerfaControl[] = [
 
       if (!dateSignature) return {};
 
-      const dateSignatureDate = parseISO(dateSignature);
+      const dateSignatureDate = customParseISODate(dateSignature);
 
       if (dateNaissance) {
         const { exactAge: ageApprenti } = caclAgeAtDate(dateNaissance, dateSignature);
@@ -253,7 +252,7 @@ export const ContratDatesControl: CerfaControl[] = [
       }
 
       if (dateDebutContrat) {
-        const dateDebutContratDate = parseISO(dateDebutContrat);
+        const dateDebutContratDate = customParseISODate(dateDebutContrat);
 
         if (isAfter(dateSignatureDate, dateDebutContratDate)) {
           return {
@@ -274,10 +273,10 @@ export const ContratDatesControl: CerfaControl[] = [
       } = values;
 
       if (!dateDebutFormationPratique) return {};
-      const dateDebutFormationPratiqueDate = parseISO(dateDebutFormationPratique);
+      const dateDebutFormationPratiqueDate = customParseISODate(dateDebutFormationPratique);
 
       if (dateDebutContrat) {
-        const dateDebutContratDate = parseISO(dateDebutContrat);
+        const dateDebutContratDate = customParseISODate(dateDebutContrat);
 
         if (isBefore(dateDebutFormationPratiqueDate, dateDebutContratDate)) {
           return {
@@ -295,7 +294,7 @@ export const ContratDatesControl: CerfaControl[] = [
       }
 
       if (dateSignature) {
-        const dateSignatureDate = parseISO(dateSignature);
+        const dateSignatureDate = customParseISODate(dateSignature);
 
         if (isBefore(dateDebutFormationPratiqueDate, dateSignatureDate)) {
           return {
@@ -306,7 +305,7 @@ export const ContratDatesControl: CerfaControl[] = [
       }
 
       if (dateFinContrat) {
-        const dateFinContratDate = parseISO(dateFinContrat);
+        const dateFinContratDate = customParseISODate(dateFinContrat);
 
         if (isAfter(dateDebutFormationPratiqueDate, dateFinContratDate)) {
           return {

@@ -1,6 +1,6 @@
-import { addMonths, differenceInMonths, isAfter, isBefore, parseISO, subMonths } from "date-fns";
+import { addMonths, differenceInMonths, isAfter, isBefore, subMonths } from "date-fns";
 import { CerfaControl } from "shared/helpers/cerfa/types/cerfa.types";
-
+import { customParseISODate } from "shared/helpers/cerfa/utils/dates";
 export const dateFormationControl: CerfaControl[] = [
   {
     deps: ["formation.dateDebutFormation"],
@@ -9,10 +9,10 @@ export const dateFormationControl: CerfaControl[] = [
       const { dateDebutFormationPratique, dateDebutContrat } = values.contrat;
 
       if (!dateDebutFormation) return {};
-      const dateDebutFormationDate = parseISO(dateDebutFormation);
+      const dateDebutFormationDate = customParseISODate(dateDebutFormation);
 
       if (dateDebutFormationPratique) {
-        const dateDebutFormationPratiqueDate = parseISO(dateDebutFormationPratique);
+        const dateDebutFormationPratiqueDate = customParseISODate(dateDebutFormationPratique);
 
         if (isBefore(dateDebutFormationDate, subMonths(dateDebutFormationPratiqueDate, 3)))
           return {
@@ -22,7 +22,7 @@ export const dateFormationControl: CerfaControl[] = [
       }
 
       if (dateDebutContrat) {
-        const dateDebutContratDate = parseISO(dateDebutContrat);
+        const dateDebutContratDate = customParseISODate(dateDebutContrat);
 
         if (
           isBefore(dateDebutFormationDate, subMonths(dateDebutContratDate, 3)) ||
@@ -42,8 +42,8 @@ export const dateFormationControl: CerfaControl[] = [
         formation: { dateDebutFormation, dateFinFormation },
       } = values;
       if (!dateDebutFormation || !dateFinFormation) return;
-      const dateDebutFormationDate = parseISO(dateDebutFormation);
-      const dateFinFormationDate = parseISO(dateFinFormation);
+      const dateDebutFormationDate = customParseISODate(dateDebutFormation);
+      const dateFinFormationDate = customParseISODate(dateFinFormation);
 
       if (isAfter(dateDebutFormationDate, dateFinFormationDate)) {
         return {
@@ -74,10 +74,10 @@ export const dateFormationControl: CerfaControl[] = [
         formation: { dateFinFormation },
       } = values;
       if (!dateFinFormation) return {};
-      const dateFinFormationDate = parseISO(dateFinFormation);
+      const dateFinFormationDate = customParseISODate(dateFinFormation);
 
       if (dateDebutContrat) {
-        const dateDebutContratDate = parseISO(dateDebutContrat);
+        const dateDebutContratDate = customParseISODate(dateDebutContrat);
 
         if (isBefore(dateFinFormationDate, dateDebutContratDate)) {
           return {
@@ -87,7 +87,7 @@ export const dateFormationControl: CerfaControl[] = [
       }
 
       if (dateFinContrat) {
-        const dateFinContratDate = parseISO(dateFinContrat);
+        const dateFinContratDate = customParseISODate(dateFinContrat);
 
         if (isAfter(dateFinFormationDate, dateFinContratDate)) {
           return {
@@ -97,7 +97,7 @@ export const dateFormationControl: CerfaControl[] = [
       }
 
       if (dateSignature) {
-        const dateSignatureDate = parseISO(dateSignature);
+        const dateSignatureDate = customParseISODate(dateSignature);
 
         if (isBefore(dateFinFormationDate, dateSignatureDate)) {
           return {
