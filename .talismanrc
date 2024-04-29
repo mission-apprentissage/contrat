@@ -16,7 +16,7 @@ fileignoreconfig:
 - filename: .infra/files/scripts/seed.sh
   checksum: a673a8f706cb90f2f5c9f98981b06ce95c566e67e2bb4a6323d6b1bdb8ef0233
 - filename: .infra/vault/vault.yml
-  checksum: 91cafd35c38d1f364157fc098ed7dba0a85c9419f951476c8eb10537599d4c0b
+  checksum: d5bfa6ae6db537bbc1be100061a9778988aaf8c2a5bc00cfe90cdb42a8656168
 - filename: README.md
   checksum: 00ac991f0b2746c5a5ffa14e2b3c5427b739c0d952aa3730efe1f234ac1fc3ca
 - filename: docs/developpement/1password.md
@@ -41,12 +41,12 @@ fileignoreconfig:
   checksum: ef7bcbc2c76441fdafda7dc51d1e3455a59d2de3fec9e0b70ff610e6011fb097
 - filename: ui/.env.test
   checksum: 5009ffea180fe9ba5c90412efb0a805646de836fe7ba738207c4a50e00f40c49
+- filename: ui/app/(application)/components/Footer.tsx
+  checksum: baea7b6079355fbb144474427caed0980c041b4cc836ae4c0e79afbe421e67d3
 - filename: ui/app/(application)/components/Markdown.tsx
   checksum: 6ba7398bf1f149cf18bd9188b47126b072b6c71b8231a0bbd59714665991b2ea
 - filename: ui/config.public.ts
   checksum: 914ccdda9ae6f6c8b6154ce40f9fb97c1808c9a3fadd82a15896d463d0f9c8f1
-- filename: ui/app/(application)/components/Footer.tsx
-  checksum: baea7b6079355fbb144474427caed0980c041b4cc836ae4c0e79afbe421e67d3
 scopeconfig:
 - scope: node
 custom_patterns:
