@@ -27,7 +27,7 @@ const summaryData = [
 ];
 
 const DonneesPersonnelles = () => {
-  const productName = "Contrat";
+  const productName = "CERFA Contrat d'apprentissage";
 
   return (
     <Grid container spacing={2}>

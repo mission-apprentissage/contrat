@@ -60,7 +60,7 @@ export const Header = () => {
         title: "Accueil - Contrat",
       }}
       quickAccessItems={[]}
-      serviceTitle="Contrat"
+      serviceTitle="CERFA Contrat d'apprentissage"
       navigation={navigation}
     />
   );
