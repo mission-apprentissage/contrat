@@ -15,7 +15,6 @@ const CerfaMaitreApprentissage: FC = () => {
       <InputController name="maitre1.nom" />
       <InputController name="maitre1.prenom" />
       <InputController name="maitre1.dateNaissance" />
-      <InputController name="maitre1.nir" />
       <InputController name="maitre1.emploiOccupe" />
       <InputController name="maitre1.niveauDiplome" />
       <InputController name="maitre1.diplome" />
@@ -25,7 +24,6 @@ const CerfaMaitreApprentissage: FC = () => {
       <InputController name="maitre2.nom" />
       <InputController name="maitre2.prenom" />
       <InputController name="maitre2.dateNaissance" />
-      <InputController name="maitre2.nir" />
       <InputController name="maitre2.emploiOccupe" />
       <InputController name="maitre2.niveauDiplome" />
       <InputController name="maitre2.diplome" />

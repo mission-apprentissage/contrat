@@ -21,7 +21,6 @@ import { etablissementFormationSiretControl } from "./etablissementFormationSire
 import { idccControl } from "./idcc.control";
 import { Maitre2Control } from "./maitre2.control";
 import { maitresControl } from "./maitres.control";
-import { maitresNirControl } from "./maitresNir.control";
 import { numeroContratPrecedentControl } from "./numeroContratPrecedent.control";
 import { organismeFormationCodePostalControl } from "./organismeFormationCodePostal.control";
 import { siretOrganismeFormationLogic } from "./organismeFormationSiret.control";
@@ -57,7 +56,6 @@ export const controls: CerfaControl[] = [
   ...dateFormationControl,
   siretOrganismeFormationLogic,
   ...maitresControl,
-  ...maitresNirControl,
   Maitre2Control,
   ...ageApprentiControl,
   ...typeDerogationControl,

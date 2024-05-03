@@ -270,12 +270,6 @@ export const pdfFields: PdfField[] = [
     attribute: "maitre1.prenom",
   },
   {
-    name: "Maître d’apprentissage n°1 NIR",
-    ref: 660,
-    type: "PDFTextField",
-    attribute: "maitre1.nir",
-  },
-  {
     name: "Maître d’apprentissage n°1 Courriel1",
     ref: 661,
     type: "PDFTextField",
@@ -306,12 +300,6 @@ export const pdfFields: PdfField[] = [
     ref: 665,
     type: "PDFTextField",
     attribute: "maitre2.prenom",
-  },
-  {
-    name: "Maître d’apprentissage n°2 NIR",
-    ref: 666,
-    type: "PDFTextField",
-    attribute: "maitre2.nir",
   },
   {
     name: "Maître d’apprentissage n°2 Courriel1",

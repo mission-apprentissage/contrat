@@ -48,26 +48,6 @@ export const maitreApprentissageSchema: CerfaFields = {
       { type: "regulatory", content: "Le maître d'apprentissage doit être majeur à la date d'exécution du contrat" },
     ],
   },
-  "maitre1.nir": {
-    label: "Numéro de sécurité sociale (NIR)",
-    required: true,
-    requiredMessage: "Le numéro de sécurité sociale du maître d'apprentissage est manquant",
-    mask: "S 00 M0 0C 000 000",
-    maskLazy: false,
-    definitions: {
-      S: /[1-2]/,
-      M: /[0-1]/,
-      C: /[1-9AB]/,
-    },
-    messages: [
-      {
-        type: "assistive",
-        content: `Ce numéro est inscrit sur la carte vitale, en dessous du nom et du prénom du porteur. 
-
-Il est officiellement appelé "Numéro d'Inscription au Répertoire des personnes physiques".`,
-      },
-    ],
-  },
   "maitre1.emploiOccupe": {
     label: "Emploi occupé",
     placeholder: "Exemple : Chaudronnier",
@@ -145,24 +125,6 @@ Ceci à défaut de dispositions conventionnelles particulières applicables dans
     fieldType: "date",
     messages: [
       { type: "regulatory", content: "Le maître d'apprentissage doit être majeur à la date d'exécution du contrat" },
-    ],
-  },
-  "maitre2.nir": {
-    label: "Numéro de sécurité sociale (NIR)",
-    mask: "S 00 M0 0C 000 000",
-    maskLazy: false,
-    definitions: {
-      S: /[1-2]/,
-      M: /[0-1]/,
-      C: /[1-9AB]/,
-    },
-    messages: [
-      {
-        type: "assistive",
-        content: `Ce numéro est inscrit sur la carte vitale, en dessous du nom et du prénom du porteur. 
-
-Il est officiellement appelé "Numéro d'Inscription au Répertoire des personnes physiques".`,
-      },
     ],
   },
   "maitre2.emploiOccupe": {
