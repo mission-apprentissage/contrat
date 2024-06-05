@@ -40,9 +40,9 @@ export const nirControl: (params: NirControlParams) => ControlReturn = ({
   if (nir.length < 3) {
     return {};
   }
-
+  console.log(dateNaissance);
   if (dateNaissance && !isEmpty(dateNaissance)) {
-    if (nir.substring(1, 3) !== dateNaissance.substring(2, 4)) {
+    if (nir.substring(1, 3) !== dateNaissance.substring(8, 10)) {
       return {
         error: "L'année de naissance indiquée ne correspond pas aux 2e et 3e chiffres du NIR",
       };
@@ -54,7 +54,7 @@ export const nirControl: (params: NirControlParams) => ControlReturn = ({
   }
 
   if (dateNaissance && !isEmpty(dateNaissance)) {
-    if (nir.substring(3, 5) !== dateNaissance.substring(5, 7)) {
+    if (nir.substring(3, 5) !== dateNaissance.substring(3, 5)) {
       return {
         error: "Le mois de naissance indiqué ne correspond pas aux 4e et 5e chiffres du NIR",
       };
