@@ -167,7 +167,7 @@ Pas de limite d'âge si l'apprenti :
     definitions: {
       S: /[1-2]/,
       M: /[0-1]/,
-      C: /[1-9AB]/,
+      C: /[0-9AB]/,
     },
     messages: [
       {
