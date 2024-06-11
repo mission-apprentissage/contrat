@@ -2,20 +2,6 @@ import { CerfaControl } from "shared/helpers/cerfa/types/cerfa.types";
 
 import { buildRemuneration } from "../components/blocks/domain/buildRemuneration";
 
-interface RemunerationAnnuelle {
-  dateDebut: string;
-  dateFin: string;
-  taux: number;
-  tauxMinimal: number;
-  typeSalaire: string;
-  salaireBrut: number;
-  ordre: number;
-}
-
-const getTauxFromRemunerationsAnnuelles = (remunerationsAnnuelles: RemunerationAnnuelle[]) => {
-  return Object.fromEntries(remunerationsAnnuelles.map((annee) => [annee.ordre, annee.taux]));
-};
-
 export const RemunerationsControl: CerfaControl[] = [
   {
     deps: [
@@ -43,28 +29,14 @@ export const RemunerationsControl: CerfaControl[] = [
         return;
       }
 
-      const oldRemus = values.contrat.remunerationsAnnuelles ?? [];
       const { remunerationsAnnuelles, smicObj } = buildRemuneration({
         apprentiDateNaissance,
         apprentiAge,
         dateDebutContrat,
         dateFinContrat,
         employeurAdresseDepartement,
-        selectedTaux: getTauxFromRemunerationsAnnuelles(oldRemus),
+        selectedTaux: {},
       });
-
-      const oldRemusCascade = Object.fromEntries(
-        // @ts-expect-error: todo
-        oldRemus?.flatMap((_, i) => [
-          [`contrat.remunerationsAnnuelles.${i}.dateDebut`, undefined],
-          [`contrat.remunerationsAnnuelles.${i}.dateFin`, undefined],
-          [`contrat.remunerationsAnnuelles.${i}.taux`, undefined],
-          [`contrat.remunerationsAnnuelles.${i}.tauxMinimal`, undefined],
-          [`contrat.remunerationsAnnuelles.${i}.typeSalaire`, undefined],
-          [`contrat.remunerationsAnnuelles.${i}.salaireBrut`, undefined],
-          [`contrat.remunerationsAnnuelles.${i}.ordre`, undefined],
-        ])
-      );
 
       const newRemus = Object.fromEntries(
         remunerationsAnnuelles?.flatMap((remu: any, i) => {
@@ -80,7 +52,7 @@ export const RemunerationsControl: CerfaControl[] = [
         })
       );
 
-      return { cascade: { ...oldRemusCascade, ...newRemus, "contrat.smic": { value: smicObj } } };
+      return { cascade: { ...newRemus, "contrat.smic": { value: smicObj } } };
     },
   },
   ...new Array(16).fill(0).map((_item, i): CerfaControl => {
