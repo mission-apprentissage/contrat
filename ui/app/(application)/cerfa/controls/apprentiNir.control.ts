@@ -5,7 +5,7 @@ import { nirControl } from "./common/nir.control";
 
 export const apprentiNirControl: CerfaControl[] = [
   {
-    deps: ["apprenti.nir"],
+    deps: ["apprenti.nir", "apprenti.departementNaissance"],
     process: async ({ values }) => {
       const { dateNaissance, departementNaissance, sexe, nir: unsanitizedNir } = values.apprenti;
       if (!unsanitizedNir || isEmpty(unsanitizedNir)) {
