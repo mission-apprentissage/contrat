@@ -5,7 +5,7 @@ import { buildRemuneration } from "../components/blocks/domain/buildRemuneration
 export const RemunerationsControl: CerfaControl[] = [
   {
     deps: [
-      "employeur.adresse.departement",
+      "employeur.adresse.codePostal",
       "apprenti.dateNaissance",
       "contrat.dateDebutContrat",
       "contrat.dateFinContrat",

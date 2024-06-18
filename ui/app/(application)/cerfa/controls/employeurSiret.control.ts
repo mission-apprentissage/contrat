@@ -152,7 +152,7 @@ export const employerSiretLogic: CerfaControl = {
         "employeur.adresse.codePostal": {
           value: result.code_postal || undefined,
           locked: false,
-          cascade: false,
+          cascade: true,
           ...(result.code_postal && SUCCESS),
         },
         "employeur.adresse.commune": {
