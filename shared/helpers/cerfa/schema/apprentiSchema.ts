@@ -84,21 +84,21 @@ export const apprentiSchema: CerfaFields = {
           label: "Voir les dérogations ",
           content: `Dérogation <15 ans
 
-Les jeunes âgés d'au moins quinze ans peuvent débuter un contrat d'apprentissage s'ils justifient avoir accompli la scolarité du premier cycle de l'enseignement secondaire. 
-Les jeunes qui atteignent l'âge de quinze ans avant le terme de l'année civile peuvent être inscrits, sous statut scolaire, dans un lycée professionnel ou dans un centre de formation d'apprentis pour débuter leur formation, dans des conditions fixées par décret en Conseil d'Etat. 
+Les jeunes âgés d'au moins quinze ans peuvent débuter un contrat d'apprentissage s'ils justifient avoir accompli la scolarité du premier cycle de l'enseignement secondaire.
+Les jeunes qui atteignent l'âge de quinze ans avant le terme de l'année civile peuvent être inscrits, sous statut scolaire, dans un lycée professionnel ou dans un centre de formation d'apprentis pour débuter leur formation, dans des conditions fixées par décret en Conseil d'Etat.
 
-Dérogation >29 ans 
+Dérogation >29 ans
 
-L'apprenti peut être âgé au maximum de 35 ans révolus (36 ans moins 1 jour) dans les cas suivants : 
-- Apprenti signant un nouveau contrat pour accéder à un niveau de diplôme supérieur à celui déjà obtenu 
-- Précédent contrat de l'apprenti rompu pour des raisons indépendantes de sa volonté 
-- Précédent contrat de l'apprenti rompu pour inaptitude physique et temporaire 
-Dans ces cas, il ne doit pas s'écouler plus d'1 an entre les 2 contrats. 
+L'apprenti peut être âgé au maximum de 35 ans révolus (36 ans moins 1 jour) dans les cas suivants :
+- Apprenti signant un nouveau contrat pour accéder à un niveau de diplôme supérieur à celui déjà obtenu
+- Précédent contrat de l'apprenti rompu pour des raisons indépendantes de sa volonté
+- Précédent contrat de l'apprenti rompu pour inaptitude physique et temporaire
+Dans ces cas, il ne doit pas s'écouler plus d'1 an entre les 2 contrats.
 
-Pas de limite d'âge si l'apprenti : 
-- est reconnu travailleur handicapé 
-- envisage de créer ou reprendre une entreprise supposant l'obtention d'un diplôme 
-- est inscrit en tant que sportif de haut niveau 
+Pas de limite d'âge si l'apprenti :
+- est reconnu travailleur handicapé
+- envisage de créer ou reprendre une entreprise supposant l'obtention d'un diplôme
+- est inscrit en tant que sportif de haut niveau
 - n'a pas obtenu son diplôme et conclue un nouveau contrat avec un autre employeur pour se présenter de nouveau à l'examen`,
         },
       },
@@ -375,10 +375,10 @@ Vous devrez fournir une attestation sur l'honneur de l'apprenti de + de 29 ans e
           content: `**Détails sur les aménagements**
 
 Plus de détails sur le [site du ministère du Travail](https://travail-emploi.gouv.fr/formation-professionnelle/formation-en-alternance-10751/apprentissage/article/handicap-contrat-d-apprentissage-amenage#:~:text=Cette%20majoration%20est%20limit%C3%A9e%20%C3%A0,de%20travailleur%20handicap%C3%A9%20(RQTH)).
-          
+
 **Guide apprentissage et handicap**
 
-[https://travail-emploi.gouv.fr/IMG/pdf/guideaprentissage_handicap2023_28072023.pdf](https://travail-emploi.gouv.fr/IMG/pdf/guideaprentissage_handicap2023_28072023.pdf)`,
+[https://travail-emploi.gouv.fr/IMG/pdf/guideapprentissage_handicap.pdf](https://travail-emploi.gouv.fr/IMG/pdf/guideapprentissage_handicap.pdf)`,
         },
       },
     ],
