@@ -40,8 +40,7 @@ export const courrielControl: CerfaControl[] = [
     process: async ({ values }) => {
       const {
         maitre1: { courriel },
-      } = values.maitre1.courriel;
-
+      } = values;
       return emailControl(courriel);
     },
   },
