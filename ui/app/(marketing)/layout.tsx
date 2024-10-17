@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
   title: "CERFA contrat d’apprentissage",
   description:
-    "Générez votre CERFA contrat d’apprentissage (10103*11): formulaire de saisie guidée en accès libre sans connexion, simple, rapide et sans erreur.",
+    "Générez votre CERFA contrat d’apprentissage (10103*12): formulaire de saisie guidée en accès libre sans connexion, simple, rapide et sans erreur.",
   keywords: ["apprentissage", "contrat", "cerfa"],
 };
 
