@@ -8,7 +8,7 @@ import { getStaticFilePath } from "../../common/utils/getStaticFilePath";
 import { drawCerfaErrors } from "../server/utils/cerfaErrorsUtils";
 import { PdfField, pdfFields } from "../server/utils/cerfaUtils";
 
-const PATH_EMPTY_CERFA_PDF = getStaticFilePath("./cerfa/cerfa_10103-11_modif.pdf");
+const PATH_EMPTY_CERFA_PDF = getStaticFilePath("./cerfa/cerfa_10103-12_modif.pdf");
 const PATH_CERFA_GUIDE_PDF = getStaticFilePath("./cerfa/guide_cerfa_apprentissage.pdf");
 
 export const getValueForPdf = (formValue: string | undefined, field: PdfField): string | boolean => {
