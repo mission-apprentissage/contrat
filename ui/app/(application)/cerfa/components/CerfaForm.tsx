@@ -146,6 +146,14 @@ const CerfaForm: FC = () => {
               <Typography gutterBottom>Téléchargez le Cerfa à tout moment - même incomplet.</Typography>
               <Button priority="primary" type="button" onClick={() => modal.open()}>
                 Télécharger
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  style={{ width: "16px", height: "16px", marginLeft: "8px" }}
+                >
+                  <path d="M3 19H21V21H3V19ZM13 13.1716L19.0711 7.1005L20.4853 8.51472L12 17L3.51472 8.51472L4.92893 7.1005L11 13.1716V2H13V13.1716Z" />
+                </svg>
               </Button>
             </Box>
           </Box>

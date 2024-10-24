@@ -6,7 +6,11 @@ import { StyledButtonContainer, StyledHero, StyledImageContainer, StyledTextCont
 
 const CeliaHero = () => {
   const handleClick = () => {
-    window.open("https://celia.emploi.gouv.fr/", "_blank", "noopener,noreferrer");
+    window.open(
+      "https://mesdemarches.emploi.gouv.fr/identification/login?service=https%3A%2F%2Fmesdemarches.emploi.gouv.fr%2Fidentification%2Foauth2.0%2FcallbackAuthorize%3Fclient_id%3Dcelia%26redirect_uri%3Dhttps%253A%252F%252Fcelia.emploi.gouv.fr%252Fapi%252Fv1%252Fpds%252FloginOrRegister%26response_type%3Dcode%26client_name%3DCasOAuthClient",
+      "_blank",
+      "noopener,noreferrer"
+    );
   };
 
   return (
