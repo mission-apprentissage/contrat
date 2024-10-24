@@ -6,6 +6,7 @@ import MobileNotice from "components/mobileNotice/MobileNotice";
 import Advantages from "./advantages/Advantages";
 import Attributes from "./attributes/Attributes";
 import Header from "./header/Header";
+import CeliaHero from "./heros/CeliaHero";
 import { StyledSectionsContainer } from "./HomePage.styled";
 import Statistics from "./statistics/Statistics";
 
@@ -19,6 +20,7 @@ const HomePage = () => {
           <Attributes />
           <Statistics />
           <Advantages />
+          <CeliaHero />
         </StyledSectionsContainer>
       </main>
     </MuiDsfrThemeProvider>

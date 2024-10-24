@@ -1,6 +1,7 @@
 "use client";
 
 import { fr } from "@codegouvfr/react-dsfr";
+import Alert from "@codegouvfr/react-dsfr/Alert";
 import Button from "@codegouvfr/react-dsfr/Button";
 import { Box, Grid, Typography } from "@mui/material";
 import { useSearchParams } from "next/navigation";
@@ -142,7 +143,7 @@ const CerfaForm: FC = () => {
             <Stepper />
 
             <Box mt={12}>
-              <Typography gutterBottom>Téléchargez à tout moment</Typography>
+              <Typography gutterBottom>Téléchargez le Cerfa à tout moment - même incomplet.</Typography>
               <Button priority="primary" type="button" onClick={() => modal.open()}>
                 Télécharger
               </Button>
@@ -153,7 +154,22 @@ const CerfaForm: FC = () => {
           <Typography variant="h1" mb={2}>
             Cerfa 10103*11 (FA13)
           </Typography>
-          <Box mx={1}>
+          <Alert
+            closable
+            description={
+              <Typography>
+                Utilisez{" "}
+                <a href="https://celia.emploi.gouv.fr/" target="_blank">
+                  CELIA
+                </a>
+                , votre plateforme de saisie en ligne des contrats d'apprentissage pour les employeurs publics.
+              </Typography>
+            }
+            onClose={function noRefCheck() {}}
+            severity="warning"
+            title="Un apprenti en contrat chez un employeur public ?"
+          />
+          <Box mx={1} mt={2}>
             <InputController name="contrat.modeContractuel" />
           </Box>
           <div className={fr.cx("fr-accordions-group")}>
