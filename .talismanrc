@@ -1,4 +1,6 @@
 fileignoreconfig:
+- filename: server/src/index.ts
+  checksum: 5f0d3655a9d44f3436f0dcb4c9f256d8b973cf0ac29867b084ca92e0b9c69ac5
 - filename: .bin/scripts/setup-local-env.sh
   checksum: c9d412b132f3a7b8b6bde35f5acac94d1fffb87ce5ac718b6abc54b214899be2
 - filename: .github/workflows/deploy_preview.yml
