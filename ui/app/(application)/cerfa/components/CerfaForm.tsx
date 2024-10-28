@@ -1,6 +1,7 @@
 "use client";
 
 import { fr } from "@codegouvfr/react-dsfr";
+import Alert from "@codegouvfr/react-dsfr/Alert";
 import Button from "@codegouvfr/react-dsfr/Button";
 import { Box, Grid, Typography } from "@mui/material";
 import { useSearchParams } from "next/navigation";
@@ -142,9 +143,17 @@ const CerfaForm: FC = () => {
             <Stepper />
 
             <Box mt={12}>
-              <Typography gutterBottom>Téléchargez à tout moment</Typography>
+              <Typography gutterBottom>Téléchargez le Cerfa à tout moment - même incomplet.</Typography>
               <Button priority="primary" type="button" onClick={() => modal.open()}>
                 Télécharger
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  style={{ width: "16px", height: "16px", marginLeft: "8px" }}
+                >
+                  <path d="M3 19H21V21H3V19ZM13 13.1716L19.0711 7.1005L20.4853 8.51472L12 17L3.51472 8.51472L4.92893 7.1005L11 13.1716V2H13V13.1716Z" />
+                </svg>
               </Button>
             </Box>
           </Box>
@@ -153,7 +162,22 @@ const CerfaForm: FC = () => {
           <Typography variant="h1" mb={2}>
             Cerfa 10103*12 (FA13)
           </Typography>
-          <Box mx={1}>
+          <Alert
+            closable
+            description={
+              <Typography>
+                Utilisez{" "}
+                <a href="https://celia.emploi.gouv.fr/" target="_blank">
+                  CELIA
+                </a>
+                , votre plateforme de saisie en ligne des contrats d'apprentissage pour les employeurs publics.
+              </Typography>
+            }
+            onClose={function noRefCheck() {}}
+            severity="warning"
+            title="Un apprenti en contrat chez un employeur public ?"
+          />
+          <Box mx={1} mt={2}>
             <InputController name="contrat.modeContractuel" />
           </Box>
           <div className={fr.cx("fr-accordions-group")}>

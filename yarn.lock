@@ -16210,9 +16210,9 @@ __metadata:
   linkType: hard
 
 "tsafe@npm:^1.6.3":
-  version: 1.6.5
-  resolution: "tsafe@npm:1.6.5"
-  checksum: 189600dd1278d0b29ae8af70a774f07581d9795974fadc901b58b961ff2d99d120fc79fbdf9055a7af083d5d633e52536f188245bc8caf9de7be33c69e9bcd2f
+  version: 1.7.5
+  resolution: "tsafe@npm:1.7.5"
+  checksum: ea7193ebdd8bb59c0c1a40dae3029c686bb7e2db74c9fe029f61ff2223acd5bba6e3a272f8f4bba87efd6434321d5edbab9eb32647a68bae9864d3efe7bb28d7
   languageName: node
   linkType: hard
 
