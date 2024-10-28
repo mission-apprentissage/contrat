@@ -3,6 +3,11 @@ import { FC } from "react";
 
 import { InputFieldProps } from "./InputField";
 
+const mapState = (state: "error" | "info" | "default" | "success" | undefined) => {
+  if (state === "info") return "default";
+  return state;
+};
+
 const ConsentInput: FC<InputFieldProps> = ({ fieldSchema, state, stateRelatedMessage, inputProps }) => {
   return (
     <Checkbox
@@ -12,7 +17,7 @@ const ConsentInput: FC<InputFieldProps> = ({ fieldSchema, state, stateRelatedMes
           nativeInputProps: inputProps,
         },
       ]}
-      state={state}
+      state={mapState(state)} // Use the mapped state
       stateRelatedMessage={stateRelatedMessage}
       disabled={inputProps.disabled}
     />
