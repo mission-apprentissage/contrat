@@ -13,6 +13,26 @@ const SMICs = {
     smics: [
       {
         annee: 2024,
+        mensuel: 1801.8,
+        horaire: 11.88,
+        heuresHebdomadaires: 35,
+        minimumGaranti: 4.22,
+        dateEntreeEnVigueur: "01/11/2024",
+        dateEntreeEnVigueurObj: parseDate("01/11/2024"),
+        dateParutionJo: "24/10/2024",
+        dateParutionJoObj: parseDate("24/10/2024"),
+        exceptions: {
+          976: {
+            departement: 976,
+            nomDepartement: "Mayotte",
+            mensuel: 1361.97,
+            horaire: 8.98,
+            heuresHebdomadaires: 35,
+          },
+        },
+      },
+      {
+        annee: 2024,
         mensuel: 1766.92,
         horaire: 11.65,
         heuresHebdomadaires: 35,
