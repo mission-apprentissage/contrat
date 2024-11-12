@@ -32,50 +32,9 @@ export async function closeSentry(): Promise<void> {
   await Sentry.close(2_000);
 }
 
-type UserData = {
-  id?: string | number;
-  username: string;
-  email?: string;
-} & Record<string, unknown>;
-
-function extractUserData(request: FastifyRequest): UserData {
-  const user = request.user;
-
-  if (!user) {
-    // @ts-expect-error
-    return {
-      segment: "anonymous",
-    };
-  }
-
-  if (user.type === "token") {
-    const identity = user.value.identity;
-    return {
-      segment: "access-token",
-      id: identity.email,
-      email: identity.email,
-      username: identity.email,
-    };
-  }
-
-  const data: UserData = {
-    segment: "session",
-    id: user.value._id.toString(),
-    username: user.value.email ?? user.value._id.toString(),
-    type: user.value.is_admin ? "admin" : "standard",
-  };
-
-  if (user.value.email) {
-    data.email = user.value.email;
-  }
-
-  return data;
-}
-
 export function initSentryFastify(app: Server) {
   const options: FastifySentryOptions = {
     setErrorHandler: false,
-    extractUserData: extractUserData,
     extractRequestData: (request: FastifyRequest) => {
       return {
         headers: request.headers,

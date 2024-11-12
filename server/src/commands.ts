@@ -2,17 +2,13 @@ import { setMaxListeners } from "node:events";
 
 import { captureException } from "@sentry/node";
 import { program } from "commander";
-import { addJob, startJobProcessor } from "job-processor";
 import HttpTerminator from "lil-http-terminator";
 
 import logger from "@/common/logger";
-import { closeMongodbConnection } from "@/common/utils/mongodbUtils";
 import createServer from "@/modules/server/server";
 
 import { closeMemoryCache } from "./common/apis/client";
-import { closeMailer } from "./common/services/mailer/mailer";
 import { closeSentry, initSentryProcessor } from "./common/services/sentry/sentry";
-import { sleep } from "./common/utils/asyncUtils";
 import config from "./config";
 
 program
@@ -30,8 +26,6 @@ program
   })
   .hook("postAction", async () => {
     closeMemoryCache();
-    await closeMailer();
-    await closeMongodbConnection();
     await closeSentry();
 
     setTimeout(() => {
@@ -40,12 +34,6 @@ program
       process.exit(1);
     }, 60_000).unref();
   });
-
-async function startProcessor(signal: AbortSignal) {
-  logger.info(`Process jobs queue - start`);
-  await startJobProcessor(signal);
-  logger.info(`Processor shut down`);
-}
 
 function createProcessExitSignal() {
   const abortController = new AbortController();
@@ -78,9 +66,8 @@ function createProcessExitSignal() {
 
 program
   .command("start")
-  .option("--withProcessor", "Exécution du processor également")
   .description("Démarre le serveur HTTP")
-  .action(async ({ withProcessor = false }) => {
+  .action(async () => {
     try {
       const signal = createProcessExitSignal();
 
@@ -113,10 +100,6 @@ program
         }),
       ];
 
-      if (withProcessor) {
-        tasks.push(startProcessor(signal));
-      }
-
       await Promise.all(tasks);
     } catch (err) {
       logger.error(err);
@@ -124,81 +107,6 @@ program
       throw err;
     }
   });
-
-program
-  .command("job_processor:start")
-  .description("Run job processor")
-  .action(async () => {
-    const signal = createProcessExitSignal();
-    if (config.disable_processors) {
-      // The processor will exit, and be restarted by docker every day
-      await sleep(24 * 3_600_000, signal);
-      return;
-    }
-
-    await startProcessor(signal);
-  });
-
-function createJobAction(name: string) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return async (options: any) => {
-    try {
-      const { queued = false, ...payload } = options;
-      const exitCode = await addJob({
-        name,
-        queued,
-        payload,
-      });
-
-      if (exitCode) {
-        program.error("Command failed", { exitCode });
-      }
-    } catch (err) {
-      logger.error(err);
-      program.error("Command failed", { exitCode: 2 });
-    }
-  };
-}
-
-program
-  .command("users:create")
-  .description("Créer un utilisateur")
-  .requiredOption("-e, --email <string>", "Email de l'utilisateur")
-  .requiredOption("-p, --password <string>", "Mot de passe de l'utilisateur")
-  .option("-a, --is_admin", "administrateur", false)
-  .option("-q, --queued", "Run job asynchronously", false)
-  .action(createJobAction("users:create"));
-
-program
-  .command("db:validate")
-  .description("Validate Documents")
-  .option("-q, --queued", "Run job asynchronously", false)
-  .action(createJobAction("db:validate"));
-
-program
-  .command("migrations:up")
-  .description("Run migrations up")
-  .option("-q, --queued", "Run job asynchronously", false)
-  .action(createJobAction("migrations:up"));
-
-program
-  .command("migrations:status")
-  .description("Check migrations status")
-  .option("-q, --queued", "Run job asynchronously", false)
-  .action(createJobAction("migrations:status"));
-
-program
-  .command("migrations:create")
-  .description("Run migrations create")
-  .requiredOption("-d, --description <string>", "description")
-  .action(createJobAction("migrations:create"));
-
-program
-  .command("indexes:recreate")
-  .description("Drop and recreate indexes")
-  .option("-d, --drop", "Drop indexes before recreating them")
-  .option("-q, --queued", "Run job asynchronously", false)
-  .action(createJobAction("indexes:recreate"));
 
 program.hook("preAction", (_, actionCommand) => {
   const command = actionCommand.name();

@@ -1,48 +1,13 @@
-import { oas31 } from "openapi3-ts";
 import { Jsonify } from "type-fest";
-import { AnyZodObject, ZodType } from "zod";
-
-import { z } from "../helpers/zodWithOpenApi";
-import { AccessPermission, AccessRessouces } from "../security/permissions";
+import { AnyZodObject, z, ZodType } from "zod";
 
 export const ZResError = z
   .object({
-    data: z
-      .any()
-      .optional()
-      .openapi({
-        description: "Données contextuelles liées à l'erreur",
-        example: {
-          validationError: {
-            issues: [
-              {
-                code: "invalid_type",
-                expected: "number",
-                received: "nan",
-                path: ["longitude"],
-                message: "Number attendu",
-              },
-            ],
-            name: "ZodError",
-            statusCode: 400,
-            code: "FST_ERR_VALIDATION",
-            validationContext: "querystring",
-          },
-        },
-      }),
+    data: z.any().optional(),
     code: z.string().nullish(),
-    message: z.string().openapi({
-      description: "Un message explicatif de l'erreur",
-      example: "querystring.longitude: Number attendu",
-    }),
-    name: z.string().openapi({
-      description: "Le type générique de l'erreur",
-      example: "Bad Request",
-    }),
-    statusCode: z.number().openapi({
-      description: "Le status code retourné",
-      example: 400,
-    }),
+    message: z.string(),
+    name: z.string(),
+    statusCode: z.number(),
   })
   .strict();
 
@@ -68,28 +33,12 @@ export const ZReqHeadersAuthorization = z
 
 export type AuthStrategy = "api-key" | "cookie-session" | "access-token";
 
-export type SecuritySchemeWithAcl = {
-  auth: AuthStrategy;
-  access: AccessPermission;
-  ressources: AccessRessouces;
-};
-
-export type SecuritySchemeNoAcl = {
-  auth: AuthStrategy;
-  access: null;
-  ressources: Record<string, never>;
-};
-
-export type SecurityScheme = SecuritySchemeWithAcl | SecuritySchemeNoAcl;
-
 interface IRouteSchemaCommon {
   path: string;
   querystring?: AnyZodObject;
   headers?: AnyZodObject;
   params?: AnyZodObject;
   response: { [statuscode: `${1 | 2 | 3 | 4 | 5}${string}`]: ZodType };
-  openapi?: null | Omit<oas31.OperationObject, "parameters" | "requestBody" | "requestParams" | "responses">;
-  securityScheme: SecurityScheme | null;
 }
 
 export interface IRouteSchemaGet extends IRouteSchemaCommon {
@@ -101,12 +50,7 @@ export interface IRouteSchemaWrite extends IRouteSchemaCommon {
   body?: ZodType;
 }
 
-export type WithSecurityScheme = {
-  securityScheme: SecurityScheme;
-};
-
 export type IRouteSchema = IRouteSchemaGet | IRouteSchemaWrite;
-export type ISecuredRouteSchema = IRouteSchema & WithSecurityScheme;
 
 export type IRoutesDef = {
   get?: Record<string, IRouteSchemaGet>;

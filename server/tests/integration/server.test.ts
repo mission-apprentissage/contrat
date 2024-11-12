@@ -2,10 +2,9 @@ import assert from "assert";
 import fastify, { RouteOptions } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { zRoutes } from "shared/index";
-import { IRouteSchemaGet, IRouteSchemaWrite, SecurityScheme } from "shared/routes/common.routes";
+import { IRouteSchemaGet, IRouteSchemaWrite } from "shared/routes/common.routes";
 import { describe, it } from "vitest";
 
-import { describeAuthMiddleware } from "../../src/modules/server/middlewares/authMiddleware";
 import { bind } from "../../src/modules/server/server";
 
 describe("server", () => {
@@ -21,7 +20,7 @@ describe("server", () => {
     const seen = new Set();
 
     for (const route of routes) {
-      const { routePath, schema, prefix, onRequest = [], preHandler = [] } = route;
+      const { routePath, schema, prefix } = route;
 
       if (prefix !== "/api") {
         continue;
@@ -44,37 +43,6 @@ describe("server", () => {
         const sharedSchema: IRouteSchemaWrite | IRouteSchemaGet = zRoutes?.[method.toLowerCase()]?.[normalizedPath];
         assert.equal(!!sharedSchema, true, `${method} ${routePath}: schema not define in shared`);
         assert.equal(schema, sharedSchema, `${method} ${routePath}: schema not match shared schema`);
-
-        const onRequestAuth = (Array.isArray(onRequest) ? onRequest : [onRequest]).reduce((acc, fn) => {
-          // @ts-expect-error
-          const s = describeAuthMiddleware(fn);
-          if (s) {
-            acc.push(s);
-          }
-          return acc;
-        }, [] as SecurityScheme[]);
-        const preHandlerAuth = (Array.isArray(preHandler) ? preHandler : [preHandler]).reduce((acc, fn) => {
-          // @ts-expect-error
-          const s = describeAuthMiddleware(fn);
-          if (s) {
-            acc.push(s);
-          }
-          return acc;
-        }, [] as SecurityScheme[]);
-
-        const expectedAuth: { onRequestAuth: SecurityScheme[]; preHandlerAuth: SecurityScheme[] } = {
-          onRequestAuth: [],
-          preHandlerAuth: [],
-        };
-        if (sharedSchema.securityScheme) {
-          expectedAuth.onRequestAuth.push(sharedSchema.securityScheme);
-        }
-
-        assert.deepEqual(
-          { onRequestAuth, preHandlerAuth },
-          expectedAuth,
-          `${method} ${routePath}: security not match shared schema`
-        );
 
         seen.add(`${method} ${routePath}`);
       }

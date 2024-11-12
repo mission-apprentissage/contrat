@@ -7,7 +7,6 @@ Le vault ansible `./infra/vault/vault.yml` contient les variables d'environnemen
 
 - `production` : environnement de production
 - `recette` : environnement de recette
-- `preview` : environnement de prévisualisation
 - `local` : environnement de développement local
 
 ## Vault édition

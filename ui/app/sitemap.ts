@@ -16,7 +16,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     getSitemapItem(PAGES.accessibilite()),
     // getSitemapItem(PAGES.mentionsLegales()),
     // getSitemapItem(PAGES.cgu()),
-    // getSitemapItem(PAGES.donneesPersonnelles()),
     // getSitemapItem(PAGES.politiqueConfidentialite()),
     // getSitemapItem(PAGES.connexion()),
     // getSitemapItem(PAGES.motDePasseOublie()),

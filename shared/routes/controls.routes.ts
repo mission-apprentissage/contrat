@@ -19,7 +19,6 @@ export const zControlsRoutes = {
           })
           .strict(),
       },
-      securityScheme: null,
     },
   },
 } as const satisfies IRoutesDef;

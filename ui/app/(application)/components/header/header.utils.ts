@@ -1,15 +1,13 @@
 import { MainNavigationProps } from "@codegouvfr/react-dsfr/MainNavigation";
-import { IUserPublic } from "shared/models/user.model";
 
 import { PAGES } from "../breadcrumb/Breadcrumb";
 
 interface GetNavigationItemsProps {
-  user?: IUserPublic;
   pathname: string;
 }
 
-export const getNavigationItems = ({ user, pathname }: GetNavigationItemsProps): MainNavigationProps.Item[] => {
-  let navigation: MainNavigationProps.Item[] = [
+export const getNavigationItems = ({ pathname }: GetNavigationItemsProps): MainNavigationProps.Item[] => {
+  const navigation: MainNavigationProps.Item[] = [
     {
       isActive: pathname === PAGES.homepage().path,
       text: "Accueil",
@@ -25,32 +23,6 @@ export const getNavigationItems = ({ user, pathname }: GetNavigationItemsProps):
       },
     },
   ];
-
-  if (user?.is_admin) {
-    navigation = [
-      ...navigation,
-      {
-        text: "Administration",
-        isActive: [PAGES.adminUsers().path, PAGES.adminFichier().path].includes(pathname),
-        menuLinks: [
-          {
-            text: PAGES.adminUsers().title,
-            isActive: pathname === PAGES.adminUsers().path,
-            linkProps: {
-              href: PAGES.adminUsers().path,
-            },
-          },
-          {
-            text: PAGES.adminFichier().title,
-            isActive: pathname === PAGES.adminFichier().path,
-            linkProps: {
-              href: PAGES.adminFichier().path,
-            },
-          },
-        ],
-      },
-    ];
-  }
 
   return navigation.map((item) => {
     const { menuLinks } = item;

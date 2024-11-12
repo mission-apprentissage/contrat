@@ -10,13 +10,9 @@ function Help() {
    echo "  release:interactive                                                                Build & Push Docker image releases"
    echo "  release:app                                                                Build & Push Docker image releases"
    echo "  deploy <env> --user <your_username>                                           Deploy application to <env>"
-   echo "  preview:build                                                                Build preview"
-   echo "  preview:cleanup --user <your_username>                                        Remove preview from close pull-requests"
    echo "  vault:init                                                                    Fetch initial vault-password from template-apprentissage"
    echo "  vault:edit                                                                    Edit vault file"
    echo "  vault:password                                                                Show vault password"
-   echo "  seed:update                                Update seed using a database"
-   echo "  seed:apply                                 Apply seed to a database"
    echo "  deploy:log:encrypt                         Encrypt Github ansible logs"
    echo "  deploy:log:dencrypt                        Decrypt Github ansible logs"
    echo 
@@ -47,18 +43,10 @@ function deploy() {
   "${SCRIPT_DIR}/deploy-app.sh" "$@"
 }
 
-function preview:build() {
-  "${SCRIPT_DIR}/build-images.sh" "$@"
-}
-
-function preview:cleanup() {
-  "${SCRIPT_DIR}/run-playbook.sh" "preview_cleanup.yml" "preview"
-}
-
 function vault:init() {
   # Ensure Op is connected
-  op account get > /dev/null
-  op document get ".vault-password-tmpl" --vault "mna-vault-passwords-common" > "${ROOT_DIR}/.infra/vault/.vault-password.gpg"
+  op --account mission-apprentissage account get > /dev/null
+  op --account mission-apprentissage document get ".vault-password-tmpl" --vault "mna-vault-passwords-common" > "${ROOT_DIR}/.infra/vault/.vault-password.gpg"
 }
 
 function vault:edit() {
@@ -68,14 +56,6 @@ function vault:edit() {
 
 function vault:password() {
   "${SCRIPT_DIR}/get-vault-password-client.sh" "$@"
-}
-
-function seed:update() {
-  "${SCRIPT_DIR}/seed-update.sh" "$@"
-}
-
-function seed:apply() {
-  "${SCRIPT_DIR}/seed-apply.sh" "$@"
 }
 
 function deploy:log:encrypt() {

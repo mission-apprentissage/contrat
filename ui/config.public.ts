@@ -5,7 +5,7 @@ export interface PublicConfig {
   host: string;
   baseUrl: string;
   apiEndpoint: string;
-  env: "local" | "preview" | "recette" | "production";
+  env: "local" | "recette" | "production";
   version: string;
   productMeta: {
     productName: string;
@@ -45,29 +45,6 @@ function getRecettePublicConfig(): PublicConfig {
     version: getVersion(),
     productMeta: getProductMeta(),
     plausible: "https://plausible.io/share/contrat-recette.apprentissage.beta.gouv.fr?auth=hRwxKp7jzbxXrRhjXAvDf",
-  };
-}
-
-function getPreviewPublicConfig(): PublicConfig {
-  const version = getVersion();
-  const matches = version.match(/^0\.0\.0-(\d+)$/);
-
-  if (!matches) {
-    throw new Error(`getPreviewPublicConfig: invalid preview version ${version}`);
-  }
-
-  const host = `${matches[1]}.contrat-preview.apprentissage.beta.gouv.fr`;
-
-  return {
-    sentry: {
-      dsn: "https://3e7602056d8e0df1638f34fc89e7aee5@sentry.apprentissage.beta.gouv.fr/13",
-    },
-    host,
-    baseUrl: `https://${host}`,
-    env: "preview",
-    apiEndpoint: `https://${host}/api`,
-    version: getVersion(),
-    productMeta: getProductMeta(),
   };
 }
 
@@ -117,7 +94,6 @@ function getEnv(): PublicConfig["env"] {
   switch (env) {
     case "production":
     case "recette":
-    case "preview":
     case "local":
       return env;
     default:
@@ -131,8 +107,6 @@ function getPublicConfig(): PublicConfig {
       return getProductionPublicConfig();
     case "recette":
       return getRecettePublicConfig();
-    case "preview":
-      return getPreviewPublicConfig();
     case "local":
       return getLocalPublicConfig();
   }

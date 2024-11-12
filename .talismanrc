@@ -1,6 +1,6 @@
 fileignoreconfig:
-- filename: server/src/index.ts
-  checksum: 5f0d3655a9d44f3436f0dcb4c9f256d8b973cf0ac29867b084ca92e0b9c69ac5
+- filename: .bin/scripts/get-vault-password-client.sh
+  checksum: 0bb3d08effd4cc3408d2431c02918ee0b63ffff623eb6ae8de7e5f30982f51bf
 - filename: .bin/scripts/setup-local-env.sh
   checksum: c9d412b132f3a7b8b6bde35f5acac94d1fffb87ce5ac718b6abc54b214899be2
 - filename: .github/workflows/deploy_preview.yml
@@ -11,14 +11,8 @@ fileignoreconfig:
   checksum: 6e16ba596ed40c0c03d896216887d76f594f352158c61c1246e630c70cb87552
 - filename: .infra/env.ini
   checksum: 3b78c6c25fa45ef557ba7e10d27cb58233bfbbf995c0346477ddfaf980165972
-- filename: .infra/files/configs/mailpit/auth
-  checksum: 23b23d13d722d209d16c8c3f91cecf56eaff968d1894f7c72f1af33ff3006c69
-- filename: .infra/files/configs/mongodb/seed.gpg
-  checksum: 1b1e81c2812b59898649bd6c46d3299275f9593703847e58590d46ec7eb405cc
-- filename: .infra/files/scripts/seed.sh
-  checksum: a673a8f706cb90f2f5c9f98981b06ce95c566e67e2bb4a6323d6b1bdb8ef0233
 - filename: .infra/vault/vault.yml
-  checksum: 8df9d93924be40bf6855b14b1518c9185009f6951b980efe29e1354d79771a53
+  checksum: 3432408382852d4d3945716a285fd7a060d9d2e890a2c87e2d96b6456cba2639
 - filename: README.md
   checksum: 00ac991f0b2746c5a5ffa14e2b3c5427b739c0d952aa3730efe1f234ac1fc3ca
 - filename: docs/developpement/1password.md
@@ -27,6 +21,8 @@ fileignoreconfig:
   checksum: 137f146297aedce399926c6ddebe9bbfb22b0e924bbdbd30be2b4654f6b248ad
 - filename: server/.env.test
   checksum: 5db82cebee68a3b56ada7e564679b9f53541dbc35a3ffdcf59fcbc9b6d41a0cf
+- filename: server/src/index.ts
+  checksum: 5f0d3655a9d44f3436f0dcb4c9f256d8b973cf0ac29867b084ca92e0b9c69ac5
 - filename: server/tests/utils/security/accessTokenService.test.ts
   checksum: 017acd9d128165e6edcfd2c33a0f218c53b0ba2b4a77f3da3fe7b58f11d6fa90
 - filename: server/tests/utils/security/authorisationService.test.ts
