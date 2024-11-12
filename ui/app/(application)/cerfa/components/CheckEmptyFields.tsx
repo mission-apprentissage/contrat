@@ -2,7 +2,7 @@ import { fr } from "@codegouvfr/react-dsfr";
 import Alert from "@codegouvfr/react-dsfr/Alert";
 import Button from "@codegouvfr/react-dsfr/Button";
 import { Box, Typography } from "@mui/material";
-import { get } from "lodash";
+import { get } from "lodash-es";
 import { FC, useState } from "react";
 import { FieldError, useFormContext } from "react-hook-form";
 

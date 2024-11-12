@@ -5,7 +5,7 @@ export interface Opco {
   simulatorUrl?: string;
 }
 
-export interface OpcoIdcc {
+interface OpcoIdcc {
   idcc: string;
   opco: string;
 }

@@ -44,6 +44,26 @@ const nextConfig = {
     hideSourceMaps: false,
     widenClientFileUpload: true,
   },
+
+  async redirects() {
+    return [
+      {
+        source: "/cgu",
+        destination: "https://cfas.apprentissage.beta.gouv.fr/cgu",
+        permanent: true,
+      },
+      {
+        source: "/mentions-legales",
+        destination: "https://cfas.apprentissage.beta.gouv.fr/mentions-legales",
+        permanent: true,
+      },
+      {
+        source: "/politique-confidentialite",
+        destination: "https://cfas.apprentissage.beta.gouv.fr/politique-de-confidentialite",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

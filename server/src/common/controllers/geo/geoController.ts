@@ -1,12 +1,6 @@
 import { departements } from "shared/constants/departements";
 
-import {
-  Adresse,
-  Coordinates,
-  getAddressFromGeoCoordinates,
-  getGeoCoordinateFromAdresse,
-  getMunicipality,
-} from "./geoAdresseData";
+import { Adresse, getGeoCoordinateFromAdresse, getMunicipality } from "./geoAdresseData";
 
 export const findCode = async (code: string, codeInsee: string | null) => {
   try {
@@ -70,15 +64,6 @@ export const findGeoCoordinateFromAdresse = async ({
   return {
     info: `Ok`,
     value: geo_coordonnees,
-    count: results_count,
-  };
-};
-
-export const findAddressFromGeoCoordinates = async ({ latitude, longitude }: Coordinates) => {
-  const { address, results_count } = await getAddressFromGeoCoordinates({ latitude, longitude });
-  return {
-    info: `Ok`,
-    value: address,
     count: results_count,
   };
 };

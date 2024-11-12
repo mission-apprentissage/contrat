@@ -13,7 +13,7 @@ interface ApiRateLimiterOptions {
   client: AxiosInstance | AxiosCacheInstance;
 }
 
-export type ApiRateLimiterFn = <T>(callback: (i: AxiosInstance | AxiosCacheInstance) => T) => Promise<T>;
+type ApiRateLimiterFn = <T>(callback: (i: AxiosInstance | AxiosCacheInstance) => T) => Promise<T>;
 
 export const apiRateLimiter = (name: string, options: ApiRateLimiterOptions): ApiRateLimiterFn => {
   const rateLimiter = new RateLimiterMemory({

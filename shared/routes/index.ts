@@ -1,31 +1,20 @@
 import { ConditionalExcept, EmptyObject, Jsonify } from "type-fest";
 import z, { ZodType } from "zod";
 
-import { zUserAdminRoutes } from "./admin/admin.routes";
-import { zAuthRoutes } from "./auth.routes";
 import { zCerfaRoutes } from "./cerfa.routes";
 import { IRouteSchema, IRouteSchemaWrite } from "./common.routes";
 import { zControlsRoutes } from "./controls.routes";
 import { zCoreRoutes } from "./core.routes";
-import { zEmailRoutes } from "./emails.routes";
 import { zGeoRoutes } from "./geo.routes";
 import { zNafRoutes } from "./naf.routes";
 import { zSiretRoutes } from "./siret.routes";
 import { zTcoRoutes } from "./tco.routes";
-import { zUserRoutes } from "./user.routes";
 
 const zRoutesGet = {
-  ...zUserAdminRoutes.get,
-  ...zUserRoutes.get,
-  ...zAuthRoutes.get,
   ...zCoreRoutes.get,
-  ...zEmailRoutes.get,
 } as const;
 
 const zRoutesPost = {
-  ...zUserAdminRoutes.post,
-  ...zAuthRoutes.post,
-  ...zEmailRoutes.post,
   ...zCerfaRoutes.post,
   ...zControlsRoutes.post,
   ...zGeoRoutes.post,
@@ -76,12 +65,6 @@ export type IQuery<S extends IRouteSchema> = S["querystring"] extends ZodType ? 
 
 export type IParam<S extends IRouteSchema> = S["params"] extends ZodType ? z.input<S["params"]> : never;
 
-type IHeadersAuth<S extends IRouteSchema> = S extends { securityScheme: { auth: infer A } }
-  ? A extends "access-token" | "api-key"
-    ? { authorization: `Bearer ${string}` }
-    : object
-  : object;
-
 export type IHeaders<S extends IRouteSchema> = S["headers"] extends ZodType
   ? Omit<z.input<S["headers"]>, "referrer">
   : object;
@@ -89,7 +72,7 @@ export type IHeaders<S extends IRouteSchema> = S["headers"] extends ZodType
 type IRequestRaw<S extends IRouteSchema> = {
   params: IParam<S>;
   querystring: IQuery<S>;
-  headers: IHeaders<S> & IHeadersAuth<S> extends EmptyObject ? never : IHeaders<S> & IHeadersAuth<S>;
+  headers: IHeaders<S> extends EmptyObject ? never : IHeaders<S>;
   body: S extends IRouteSchemaWrite ? IBody<S> : never;
 };
 

@@ -18,10 +18,6 @@ export const PAGES = {
     title: "Conditions Générales d'Utilisation",
     path: "https://cfas.apprentissage.beta.gouv.fr/cgu",
   }),
-  donneesPersonnelles: () => ({
-    title: "Données Personnelles",
-    path: "/donnees-personnelles",
-  }),
   politiqueConfidentialite: () => ({
     title: "Politique de Confidentialité",
     path: "https://cfas.apprentissage.beta.gouv.fr/politique-de-confidentialite",
@@ -30,43 +26,6 @@ export const PAGES = {
     title: "Statistiques",
     path: "/stats",
   }),
-  connexion: () => ({
-    title: "Se connecter",
-    path: "/auth/connexion",
-  }),
-  motDePasseOublie: () => ({
-    title: "Mot de passe oublié",
-    path: "/auth/mot-de-passe-oublie",
-  }),
-  modifierMotDePasse: () => ({
-    title: "Modifier mon mot de passe",
-    path: "/modifier-mot-de-passe",
-  }),
-  compteProfil: () => ({
-    title: "Mon profil",
-    path: "/compte/profil",
-  }),
-  nouveauDossier: () => ({
-    title: "Nouveau dossier",
-    path: "/dossiers/nouveau",
-  }),
-  adminFichier: () => ({
-    title: "Gestion des fichiers",
-    path: "/admin/fichier",
-  }),
-  adminImport: () => ({
-    title: "Import de fichier",
-    path: "/admin/fichier/import",
-  }),
-  adminUsers: () => ({
-    title: "Gestion des utilisateurs",
-    path: "/admin/utilisateurs",
-  }),
-  adminUserView: (id: string) => ({
-    title: "Fiche utilisateur",
-    path: `/admin/utilisateurs/${id}`,
-  }),
-
   cerfa: () => ({
     title: "Cerfa",
     path: "/cerfa",

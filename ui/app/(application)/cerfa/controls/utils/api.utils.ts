@@ -98,10 +98,3 @@ export const controlEmail = async (email: string): Promise<{ is_valid?: boolean;
     return { error: e.prettyMessage ?? "Une erreur technique est survenue" };
   }
 };
-
-export const apiService = {
-  fetchSiret,
-  fetchCodePostal,
-  fetchNaf,
-  fetchCfdrncp,
-};

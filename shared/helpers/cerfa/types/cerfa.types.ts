@@ -1,13 +1,4 @@
-export type FieldType =
-  | "text"
-  | "number"
-  | "select"
-  | "radio"
-  | "email"
-  | "date"
-  | "numberStepper"
-  | "consent"
-  | "phone";
+type FieldType = "text" | "number" | "select" | "radio" | "email" | "date" | "numberStepper" | "consent" | "phone";
 
 export enum FieldEnum {
   "text" = "text",
@@ -36,7 +27,7 @@ export interface RadioOption {
   value: string | number;
 }
 
-export type SelectOptions = SelectOption[] | SelectNestedOption[] | RadioOption[];
+type SelectOptions = SelectOption[] | SelectNestedOption[] | RadioOption[];
 
 export interface InformationMessage {
   type: "assistive" | "regulatory" | "bonus";

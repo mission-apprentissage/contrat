@@ -15,7 +15,6 @@ export const zNafRoutes = {
       response: {
         "2xx": z.any(),
       },
-      securityScheme: null,
     },
   },
 } as const satisfies IRoutesDef;

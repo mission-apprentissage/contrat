@@ -5,7 +5,7 @@ export enum Siasp {
   HORS_FONCTION_PUBLIQUE = "HFP",
 }
 
-export interface CategoryJuridique {
+interface CategoryJuridique {
   category_juridique_id: string;
   libelle: string;
   siasp: "FPE" | "FPH" | "FPT" | "HFP";

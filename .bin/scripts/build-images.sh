@@ -19,7 +19,7 @@ get_channel() {
 }
 
 if [[ $# == "0" ]]; then
-  echo "Veuillez spécifier les environnements à build (production, recette, preview, local)"
+  echo "Veuillez spécifier les environnements à build (production, recette, local)"
   exit 1;
 fi;
 
