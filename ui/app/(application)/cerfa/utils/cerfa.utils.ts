@@ -16,7 +16,7 @@ export interface CerfaStep {
   messages?: InformationMessage[];
 }
 
-export type CerfaStepType = "EMPLOYEUR" | "APPRENTI" | "MAITRE_APPRENTISSAGE" | "CONTRAT" | "FORMATION" | "SIGNATURES";
+type CerfaStepType = "EMPLOYEUR" | "APPRENTI" | "MAITRE_APPRENTISSAGE" | "CONTRAT" | "FORMATION" | "SIGNATURES";
 
 export const CERFA_STEPS: Record<CerfaStepType, CerfaStep> = {
   EMPLOYEUR: {

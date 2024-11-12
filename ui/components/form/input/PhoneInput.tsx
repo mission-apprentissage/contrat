@@ -15,7 +15,7 @@ interface Props extends InputProps.RegularInput {
  * @see <https://components.react-dsfr.codegouv.studio/?path=/docs/components-input>
  * This is a more composable version to make custom components
  * */
-export const PhoneInput = memo(
+const PhoneInput = memo(
   forwardRef<HTMLDivElement, Props>((props, ref) => {
     const {
       disabled = false,

@@ -27,7 +27,7 @@ const SUCCESS = {
   stateRelatedMessage: "Récupéré automatiquement à partir du siret",
 };
 
-export const employerSiretLogic: CerfaControl = {
+const employerSiretLogic: CerfaControl = {
   deps: ["employeur.siret"],
   process: async ({ values, signal }) => {
     const siret = values.employeur.siret;

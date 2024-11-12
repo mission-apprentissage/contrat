@@ -17,7 +17,7 @@ export const getFieldSchema = (name: string) => {
   return cerfaSchema.fields[name];
 };
 
-export const indexedDependencies = (() => {
+const indexedDependencies = (() => {
   const names: Record<string, any> = {};
   controls.forEach((rule) => {
     rule.deps.forEach((dep) => {

@@ -78,7 +78,7 @@ export default async (): Promise<Server> => {
 
 type RegisterRoutes = (opts: { server: Server }) => void;
 
-export const registerRoutes: RegisterRoutes = ({ server }) => {
+const registerRoutes: RegisterRoutes = ({ server }) => {
   coreRoutes({ server });
   cerfaRoutes({ server });
   controlsRoutes({ server });

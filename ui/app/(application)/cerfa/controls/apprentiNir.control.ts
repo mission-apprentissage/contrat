@@ -1,4 +1,4 @@
-import { isEmpty } from "lodash";
+import { isEmpty } from "lodash-es";
 import { CerfaControl } from "shared/helpers/cerfa/types/cerfa.types";
 
 import { nirControl } from "./common/nir.control";

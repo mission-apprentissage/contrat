@@ -18,7 +18,7 @@ function getZodMessageError(error: ZodError, context: string): string {
   }, "");
 }
 
-export function boomify(rawError: FastifyError | Boom.Boom<unknown> | Error | ZodError): Boom.Boom<unknown> {
+function boomify(rawError: FastifyError | Boom.Boom<unknown> | Error | ZodError): Boom.Boom<unknown> {
   if (Boom.isBoom(rawError)) {
     return rawError;
   }

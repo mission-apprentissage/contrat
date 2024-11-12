@@ -48,26 +48,3 @@ export function initSentryFastify(app: Server) {
   // @ts-expect-error
   app.register(fastifySentryPlugin, { options, ...getOptions() });
 }
-
-function getTransation() {
-  return Sentry.getCurrentHub()?.getScope()?.getSpan();
-}
-
-export function startSentryPerfRecording(
-  category: string,
-  operation: string,
-  data: {
-    [key: string]: unknown;
-  } = {}
-): () => void {
-  const childTransaction =
-    getTransation()?.startChild({
-      op: category,
-      description: operation,
-      data,
-    }) ?? null;
-
-  return () => {
-    childTransaction?.finish();
-  };
-}

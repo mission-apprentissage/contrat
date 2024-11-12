@@ -1,6 +1,6 @@
 import { InputProps } from "@codegouvfr/react-dsfr/Input";
-import { get, setWith } from "lodash";
-import { FieldError, FieldErrorsImpl, FieldValues, FormState, Merge, UseFormReturn } from "react-hook-form";
+import { get } from "lodash-es";
+import { FieldValues, FormState, UseFormReturn } from "react-hook-form";
 import { SetterOrUpdater } from "recoil";
 import { CerfaField, CerfaForm, InformationMessage } from "shared/helpers/cerfa/types/cerfa.types";
 
@@ -80,18 +80,6 @@ export const validateField = async (
   return error;
 };
 
-export const getValues = (fields: any) => {
-  if (!fields) return undefined;
-  const values = {};
-  Object.entries(fields).forEach(([key, field]) => {
-    // @ts-expect-error: todo
-    setWith(values, key, field.value);
-  });
-  return values;
-};
-
-export const isEmptyValue = (value: any) => value === "" || value === undefined || value === null;
-
 export const downloadFile = (data: Blob, filename: string) => {
   // Step 5: Create a download link for the Blob
   const url = URL.createObjectURL(data);
@@ -123,25 +111,4 @@ export const getInformationMessageMarginTop = (fieldSchema: CerfaField) => {
     default:
       return 4;
   }
-};
-
-export const isFieldError = (
-  error: FieldError | Merge<FieldError, FieldErrorsImpl<any>> | undefined
-): error is FieldError => {
-  if (!error) return false;
-  return "type" in error && "message" in error;
-};
-
-export const countBlockErrors = (errors: FormState<FieldValues>["errors"]) => {
-  let count = 0;
-
-  Object.entries(errors).forEach(([_, value]) => {
-    if (isFieldError(value as FieldError)) {
-      count++;
-    } else {
-      count += countBlockErrors(value as FormState<FieldValues>["errors"]);
-    }
-  });
-
-  return count;
 };

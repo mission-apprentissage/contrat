@@ -28,7 +28,7 @@ const apiParams = {
   non_diffusables: true,
 };
 
-export const getEntreprisePart = (endpoint: string) => {
+const getEntreprisePart = (endpoint: string) => {
   return apiEntrepriseClient(async (client) => {
     try {
       logger.debug(`[Entreprise API] Fetching entreprise part ${endpoint}...`);

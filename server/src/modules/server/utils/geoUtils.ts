@@ -1,5 +1,4 @@
 import {
-  findAddressFromGeoCoordinates,
   findCode,
   findDataByDepartementNum,
   findGeoCoordinateFromAdresse,
@@ -89,47 +88,6 @@ export const getCoordinatesFromAddressData = async ({
     },
     messages: {
       geo_coordonnees: coordUpdated.info,
-    },
-  };
-};
-// @ts-expect-error: TODO
-export const getAddressDataFromCoordinates = async ({ latitude, longitude }) => {
-  const result = await findAddressFromGeoCoordinates({ latitude, longitude });
-
-  if (result.count === 0) {
-    return {
-      result: {},
-      messages: {
-        error: `Erreur: Aucun résultat pour les coordonnées ${latitude}, ${longitude}`,
-      },
-    };
-  }
-
-  // @ts-expect-error: TODO
-  const { insee_com, code_dept, postal_code, nom_comm, nom_voie, numero_voie, type_voie } = result.value;
-
-  const { nom_dept, nom_region, code_region, nom_academie, num_academie } = findDataByDepartementNum(code_dept);
-
-  return {
-    result: {
-      adresse: {
-        numero_voie,
-        type_voie,
-        nom_voie,
-        code_postal: postal_code,
-        code_commune_insee: insee_com,
-        commune: nom_comm,
-        num_departement: code_dept,
-        nom_departement: nom_dept,
-        region: nom_region,
-        num_region: code_region,
-        nom_academie: nom_academie,
-        num_academie: `${num_academie}`,
-      },
-      results_count: result.count,
-    },
-    messages: {
-      adresse: result.info,
     },
   };
 };

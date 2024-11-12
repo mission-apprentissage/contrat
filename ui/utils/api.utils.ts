@@ -1,4 +1,4 @@
-import { IDeleteRoutes, IGetRoutes, IPostRoutes, IPutRoutes, IRequest, IResponse } from "shared";
+import { IPostRoutes, IRequest, IResponse } from "shared";
 import { generateUri, PathParam, QueryString, WithQueryStringAndPathParam } from "shared/helpers/generateUri";
 import { IResErrorJson, IRouteSchema, IRouteSchemaWrite } from "shared/routes/common.routes";
 import { EmptyObject } from "type-fest";
@@ -81,7 +81,7 @@ export function generateUrl(path: string, options: WithQueryStringAndPathParam =
   return removeAtEnd(publicConfig.apiEndpoint, "/") + generateUri(path, { params, querystring });
 }
 
-export interface ApiErrorContext {
+interface ApiErrorContext {
   path: string;
   params: PathParam;
   querystring: QueryString;
@@ -164,50 +164,5 @@ export async function apiPost<P extends keyof IPostRoutes, S extends IPostRoutes
   options: IRequest<S>
 ): Promise<IResponse<S>> {
   const res = await apiPostRaw(path, options);
-  return res.json();
-}
-
-export async function apiGet<P extends keyof IGetRoutes, S extends IGetRoutes[P] = IGetRoutes[P]>(
-  path: P,
-  options: IRequest<S>
-): Promise<IResponse<S>> {
-  const { requestInit, headers } = await optionsToFetchParams("GET", options);
-
-  const res = await fetch(generateUrl(path, options), requestInit);
-
-  if (!res.ok) {
-    throw await ApiError.build(path, headers, options, res);
-  }
-
-  return res.json();
-}
-
-export async function apiPut<P extends keyof IPutRoutes, S extends IPutRoutes[P] = IPutRoutes[P]>(
-  path: P,
-  options: IRequest<S>
-): Promise<IResponse<S>> {
-  const { requestInit, headers } = await optionsToFetchParams("PUT", options);
-
-  const res = await fetch(generateUrl(path, options), requestInit);
-
-  if (!res.ok) {
-    throw await ApiError.build(path, headers, options, res);
-  }
-
-  return res.json();
-}
-
-export async function apiDelete<P extends keyof IDeleteRoutes, S extends IDeleteRoutes[P] = IDeleteRoutes[P]>(
-  path: P,
-  options: IRequest<S>
-): Promise<IResponse<S>> {
-  const { requestInit, headers } = await optionsToFetchParams("DELETE", options);
-
-  const res = await fetch(generateUrl(path, options), requestInit);
-
-  if (!res.ok) {
-    throw await ApiError.build(path, headers, options, res);
-  }
-
   return res.json();
 }

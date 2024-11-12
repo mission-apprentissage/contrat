@@ -11,7 +11,7 @@ import { PdfField, pdfFields } from "../server/utils/cerfaUtils";
 const PATH_EMPTY_CERFA_PDF = getStaticFilePath("./cerfa/cerfa_10103-12_modif.pdf");
 const PATH_CERFA_GUIDE_PDF = getStaticFilePath("./cerfa/guide_cerfa_apprentissage.pdf");
 
-export const getValueForPdf = (formValue: string | undefined, field: PdfField): string | boolean => {
+const getValueForPdf = (formValue: string | undefined, field: PdfField): string | boolean => {
   if (!formValue) return "";
   if (formValue === "") return "";
 
@@ -121,7 +121,7 @@ export const createCerfaPdf = async (rawData: Record<string, any>) => {
   return pdfDoc.save();
 };
 
-export const createCerfaErrorsPdf = async (errors: Record<string, any>) => {
+const createCerfaErrorsPdf = async (errors: Record<string, any>) => {
   const pdfDoc = await PDFDocument.create();
 
   await drawCerfaErrors(pdfDoc, errors);
@@ -129,7 +129,7 @@ export const createCerfaErrorsPdf = async (errors: Record<string, any>) => {
   return pdfDoc.save();
 };
 
-export const createCerfaGuidePdf = async () => {
+const createCerfaGuidePdf = async () => {
   return fs.readFile(PATH_CERFA_GUIDE_PDF);
 };
 

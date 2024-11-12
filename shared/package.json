@@ -15,13 +15,11 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "lodash-es": "^4.17.21",
-    "react": "18.2.0",
+    "date-fns": "^2.30.0",
     "type-fest": "^4.2.0",
     "zod": "^3.22.1"
   },
   "devDependencies": {
-    "bson": "^5.4.0",
     "typescript": "^5.1.6",
     "zod": "^3.22.1"
   }

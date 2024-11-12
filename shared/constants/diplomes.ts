@@ -140,7 +140,7 @@ export const NIVEAUX_DIPLOMES = [
   { value: "8", label: "8 - Doctorat, habilitation à diriger des recherches " },
 ];
 
-export const codeDiplomeStartToDiplome: Record<string, string> = {
+const codeDiplomeStartToDiplome: Record<string, string> = {
   "010": "35",
   "013": "35",
   "100": "80",
